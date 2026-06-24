@@ -1,0 +1,13 @@
+# Example denylist format for The Behavioral Layer.
+#
+# This example is intentionally free of real terms. Do NOT add real names here:
+# this file is tracked in git. Put your real terms in `.editorial/denylist.local.txt`
+# (gitignored) or in the EDITORIAL_DENYLIST GitHub Actions secret.
+#
+# Format: one term per line. Blank lines and lines starting with `#` are ignored.
+# Matching is case-insensitive substring matching over everything in content/.
+#
+# Example entries (placeholders, not real):
+# Example Forbidden Company Name
+# A Private Product Name
+# Some Client Codename

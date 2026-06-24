@@ -1,0 +1,20 @@
+# Dependencies
+node_modules
+
+# Quartz build output and cache
+public
+.quartz-cache
+
+# OS / editor noise
+.DS_Store
+.obsidian
+
+# Editorial guardrail: the forbidden-term list is owner-supplied and never tracked.
+.editorial/denylist.local.txt
+
+# Build / profiling artifacts
+prof
+tsconfig.tsbuildinfo
+
+# Optional private notes (Quartz convention; not built, not published)
+private/

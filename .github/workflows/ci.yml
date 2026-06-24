@@ -1,0 +1,41 @@
+name: CI
+
+# Runs on every pull request and on every push to main. All steps must pass for a
+# pull request to be mergeable (configure branch protection to require this job).
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  content-guardrails:
+    name: Content guardrails + build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # (a) every resource note has a url; (b) required fields + valid enums + dates;
+      # (c) all internal links / wikilinks resolve; plus the no-em-dash house rule.
+      - name: Lint content (EDITORIAL guardrails)
+        run: node scripts/lint-content.mjs
+
+      # Forbidden-term guardrail. The list is supplied via the EDITORIAL_DENYLIST secret;
+      # with no secret set, this passes (see .editorial/README.md).
+      - name: Forbidden-term denylist
+        run: node scripts/check-denylist.mjs
+        env:
+          EDITORIAL_DENYLIST: ${{ secrets.EDITORIAL_DENYLIST }}
+
+      # The site must build for a merge.
+      - name: Build site
+        run: npx quartz build
