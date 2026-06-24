@@ -22,5 +22,3 @@ behavioral contracts, escalation, and repair.
 - Whether a mechanism produces trustworthy behavior is judged in
   [[evaluate/index|Evaluate]].
 - The behavioral goals these mechanisms serve are defined in [[behavior/index|Behavior]].
-
-See [[langgraph]] for a format exemplar in this section.

@@ -63,24 +63,53 @@ function walk(dir) {
 }
 const files = walk(CONTENT)
 
-// ---- build link-resolution index -------------------------------------------
-const relNoExt = new Set() // "evaluate/swe-bench", "behavior/index", ...
-const slugs = new Set() // basenames: "swe-bench", "index", ...
+// ---- build link-resolution index (mirrors Quartz slug + alias resolution) ---
+// Quartz's sluggify (quartz/util/path.ts) is case-preserving: it replaces
+// whitespace with "-", "&" with "-and-", "%" with "-percent", and strips "?"/"#".
+// A note's `aliases` become reachable slugs via Quartz's AliasRedirects emitter,
+// so a wikilink like [[Constitutional AI]] resolves to constitutional-ai.md only
+// because that note declares the alias. We add alias slugs to the index too, and
+// resolve case-sensitively, exactly as the built site does.
+const sluggifySeg = (seg) =>
+  seg
+    .replace(/\s/g, "-")
+    .replace(/&/g, "-and-")
+    .replace(/%/g, "-percent")
+    .replace(/\?/g, "")
+    .replace(/#/g, "")
+const sluggify = (p) => p.split("/").map(sluggifySeg).join("/")
+
+const relNoExt = new Set() // full slugs: "evaluate/tau-bench", "behavior/index", ...
+const slugs = new Set() // last segment: "tau-bench", "index", "OpenAI-Model-Spec", ...
 const toPosix = (p) => p.split(sep).join("/")
 for (const f of files) {
-  const rel = toPosix(relative(CONTENT, f)).replace(/\.md$/, "")
+  const rel = sluggify(toPosix(relative(CONTENT, f)).replace(/\.md$/, ""))
   relNoExt.add(rel)
   slugs.add(basename(rel))
+  // aliases extend the reachable slug set (Quartz AliasRedirects)
+  try {
+    const aliases = matter(readFileSync(f, "utf8")).data?.aliases
+    const list = Array.isArray(aliases) ? aliases : aliases ? [aliases] : []
+    for (const a of list) {
+      const aslug = sluggify(toPosix(String(a)))
+      relNoExt.add(aslug)
+      slugs.add(basename(aslug))
+    }
+  } catch {
+    /* malformed frontmatter is reported in the per-file pass below */
+  }
 }
 
 function resolvesInternal(target, fromFileRel) {
   let t = target.split("#")[0].split("|")[0].trim()
   if (t === "") return true // pure same-page anchor
+  t = t.replace(/^\//, "")
+  const ts = sluggify(t)
   return (
-    relNoExt.has(t) ||
-    relNoExt.has(`${t}/index`) ||
-    slugs.has(basename(t)) ||
-    relNoExt.has(toPosix(join(dirname(fromFileRel), t)))
+    relNoExt.has(ts) ||
+    relNoExt.has(`${ts}/index`) ||
+    slugs.has(basename(ts)) ||
+    relNoExt.has(sluggify(toPosix(join(dirname(fromFileRel), t))))
   )
 }
 
@@ -93,8 +122,8 @@ function resolvesMarkdown(url, fromFileRel) {
   if (p === "") return true
   const fromDir = dirname(fromFileRel)
   const abs = p.startsWith("/")
-    ? p.replace(/^\//, "")
-    : toPosix(join(fromDir, p))
+    ? sluggify(p.replace(/^\//, ""))
+    : sluggify(toPosix(join(fromDir, p)))
   return relNoExt.has(abs) || relNoExt.has(`${abs}/index`) || slugs.has(basename(abs))
 }
 

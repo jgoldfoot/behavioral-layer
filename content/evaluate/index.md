@@ -23,4 +23,4 @@ scores alone.
 - The behaviors being measured are defined in [[behavior/index|Behavior]].
 - The harnesses and frameworks under test live in [[build/index|Build]].
 
-See [[swe-bench]] for a format exemplar in this section.
+See [[tau-bench]] for a worked example in this section.
