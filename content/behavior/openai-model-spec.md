@@ -53,5 +53,5 @@ Context on why the Spec exists and how the lab maintains it: [Inside our approac
 
 ## Related
 
-- [[Constitutional AI]] - the training-time mechanism for instilling a behavioral standard
+- [[constitutional-ai|Constitutional AI]] - the training-time mechanism for instilling a behavioral standard
 - [[tau-bench]] - measuring whether specified behavior actually holds under repeated trials

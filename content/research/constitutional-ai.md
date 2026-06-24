@@ -21,7 +21,7 @@ Constitutional AI is usually filed under AI safety. The more useful reading, for
 
 The method replaces piecemeal human labeling of good and bad outputs with a short list of explicit principles, the constitution, and trains the model to critique and revise its own responses against them. The behavior is not tuned in by hand and hoped for. It is specified in writing, then enforced by the training process.
 
-That is the same idea the [[OpenAI Model Spec]] makes product-facing, approached from the training side. One states how a system should behave. This shows a way to make the model internalize it. Together they are the two halves of governing behavior on purpose: write it down, then build a mechanism that conforms to what you wrote.
+That is the same idea the [[openai-model-spec|OpenAI Model Spec]] makes product-facing, approached from the training side. One states how a system should behave. This shows a way to make the model internalize it. Together they are the two halves of governing behavior on purpose: write it down, then build a mechanism that conforms to what you wrote.
 
 ## Builder read
 
@@ -51,6 +51,6 @@ Primary: [Constitutional AI: Harmlessness from AI Feedback](https://arxiv.org/ab
 
 ## Related
 
-- [[OpenAI Model Spec]] - the same goal from the published-standard side
-- [[Behavioral Contracts]] - governing conduct at the application layer, where principles meet concrete cases
+- [[openai-model-spec|OpenAI Model Spec]] - the same goal from the published-standard side
+- [[behavioral-contracts|Behavioral Contracts]] - governing conduct at the application layer, where principles meet concrete cases
 - [[tau-bench]] - measuring whether trained-in behavior holds under repeated trials

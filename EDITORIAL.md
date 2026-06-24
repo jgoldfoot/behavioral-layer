@@ -127,6 +127,13 @@ concept note **(CI)**:
 7.3 All internal links (markdown links and `[[wikilinks]]`) MUST resolve to an existing
 note. **(CI)** Broken links fail the build.
 
+7.4 Internal wikilinks MUST use the piped form `[[kebab-filename|Display Title]]`, targeting
+the note's real filename (its slug), never the bare title. **(CI)** This keeps links valid
+when a title changes and removes any dependence on `aliases` to resolve. A bare wikilink is
+allowed only when the link text already equals the filename (for example `[[tau-bench]]`).
+Section-index links use the path form, `[[evaluate/index|Evaluate]]`. This is the standing
+rule for all notes, human- or agent-authored.
+
 ## 8. What CI does not check
 
 8.1 CI verifies structure, required fields, link integrity, the em-dash ban, and the

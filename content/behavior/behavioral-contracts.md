@@ -42,6 +42,6 @@ The agentic era keeps producing agents faster than anyone can govern them. The t
 
 ## Start here
 
-- [[OpenAI Model Spec]] - what a behavioral specification looks like when a frontier lab publishes one
-- [[Constitutional AI]] - training a behavioral standard into a model
+- [[openai-model-spec|OpenAI Model Spec]] - what a behavioral specification looks like when a frontier lab publishes one
+- [[constitutional-ai|Constitutional AI]] - training a behavioral standard into a model
 - [[tau-bench]] - measuring whether the specified behavior actually holds

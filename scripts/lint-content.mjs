@@ -8,6 +8,8 @@
  *       - `superseded_by` required when status is "superseded"              [clause 5.2]
  *       - `## Builder read` and `## Exec read` sections both present        [clause 3.1]
  *   (c) every internal link / wikilink resolves to an existing note         [clause 7.3]
+ *   (d) every internal wikilink targets a real filename via the piped form,
+ *       not a bare title or alias                                          [clause 7.4]
  *   plus: no em-dashes anywhere                                             [clause 6.1]
  *
  * Structural pages (any index.md, dashboard.md, or a note whose frontmatter
@@ -79,14 +81,21 @@ const sluggifySeg = (seg) =>
     .replace(/#/g, "")
 const sluggify = (p) => p.split("/").map(sluggifySeg).join("/")
 
-const relNoExt = new Set() // full slugs: "evaluate/tau-bench", "behavior/index", ...
-const slugs = new Set() // last segment: "tau-bench", "index", "OpenAI-Model-Spec", ...
+const fileRel = new Set() // real-file full slugs only (no aliases)
+const fileBase = new Set() // real-file last segments only (no aliases)
+const relNoExt = new Set() // real files + aliases (alias-aware resolution)
+const slugs = new Set() // last segment: real files + aliases
+const aliasToFile = new Map() // alias slug -> the real filename that declares it
 const toPosix = (p) => p.split(sep).join("/")
 for (const f of files) {
   const rel = sluggify(toPosix(relative(CONTENT, f)).replace(/\.md$/, ""))
+  fileRel.add(rel)
+  fileBase.add(basename(rel))
   relNoExt.add(rel)
   slugs.add(basename(rel))
-  // aliases extend the reachable slug set (Quartz AliasRedirects)
+  // aliases extend the reachable slug set (Quartz AliasRedirects) so a link is not
+  // "broken", but aliases are NOT real filenames -- the piped-link convention
+  // (clause 7.4) requires links to target the filename, so we track them separately.
   try {
     const aliases = matter(readFileSync(f, "utf8")).data?.aliases
     const list = Array.isArray(aliases) ? aliases : aliases ? [aliases] : []
@@ -94,6 +103,8 @@ for (const f of files) {
       const aslug = sluggify(toPosix(String(a)))
       relNoExt.add(aslug)
       slugs.add(basename(aslug))
+      aliasToFile.set(aslug, basename(rel))
+      aliasToFile.set(basename(aslug), basename(rel))
     }
   } catch {
     /* malformed frontmatter is reported in the per-file pass below */
@@ -110,6 +121,21 @@ function resolvesInternal(target, fromFileRel) {
     relNoExt.has(`${ts}/index`) ||
     slugs.has(basename(ts)) ||
     relNoExt.has(sluggify(toPosix(join(dirname(fromFileRel), t))))
+  )
+}
+
+// A wikilink "targets a real filename" if it resolves against the real-file slug
+// set, NOT only via an alias. The piped-link convention (clause 7.4) requires this.
+function targetsRealFile(target, fromFileRel) {
+  let t = target.split("#")[0].split("|")[0].trim()
+  if (t === "") return true
+  t = t.replace(/^\//, "")
+  const ts = sluggify(t)
+  return (
+    fileRel.has(ts) ||
+    fileRel.has(`${ts}/index`) ||
+    fileBase.has(basename(ts)) ||
+    fileRel.has(sluggify(toPosix(join(dirname(fromFileRel), t))))
   )
 }
 
@@ -233,8 +259,23 @@ for (const file of files) {
     const text = line.replace(/`[^`]*`/g, "") // drop inline code spans
     // wikilinks: [[target]] and embeds ![[target]]
     for (const m of text.matchAll(/!?\[\[([^\]]+)\]\]/g)) {
-      if (!resolvesInternal(m[1], rel)) {
-        err(file, `broken wikilink: [[${m[1]}]]`, ln)
+      const link = m[1]
+      if (!resolvesInternal(link, rel)) {
+        err(file, `broken wikilink: [[${link}]]`, ln)
+      } else if (!targetsRealFile(link, rel)) {
+        // resolves, but only via an alias/title: enforce the piped-filename form.
+        const targetPart = link.split("|")[0].split("#")[0].trim().replace(/^\//, "")
+        const display = link.includes("|") ? link.slice(link.indexOf("|") + 1) : link
+        const suggest =
+          aliasToFile.get(sluggify(targetPart)) ||
+          aliasToFile.get(basename(sluggify(targetPart))) ||
+          "<filename>"
+        err(
+          file,
+          `wikilink [[${link}]] targets a title/alias, not a real filename; ` +
+            `use the piped form [[${suggest}|${display}]] (clause 7.4)`,
+          ln,
+        )
       }
     }
     // markdown links: [text](target)

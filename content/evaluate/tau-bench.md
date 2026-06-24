@@ -53,6 +53,6 @@ Successor with a dual-control environment: [tau2-bench](https://arxiv.org/abs/25
 
 ## Related
 
-- [[OpenAI Model Spec]] - the standard that says how the system should behave
-- [[Constitutional AI]] - training behavior in; tau-bench measures whether it held
-- [[Behavioral Contracts]] - the rules an agent is measured against, living as an explicit artifact
+- [[openai-model-spec|OpenAI Model Spec]] - the standard that says how the system should behave
+- [[constitutional-ai|Constitutional AI]] - training behavior in; tau-bench measures whether it held
+- [[behavioral-contracts|Behavioral Contracts]] - the rules an agent is measured against, living as an explicit artifact
