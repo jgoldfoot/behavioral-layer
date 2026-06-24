@@ -6,6 +6,7 @@ type: concept
 section: behavior
 audience: both
 source_tier: original
+credit: [Joel Goldfoot]
 date_added: 2026-06-24
 last_verified: 2026-06-24
 status: live

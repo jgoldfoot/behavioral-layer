@@ -5,6 +5,7 @@ type: benchmark
 section: evaluate
 audience: both
 source_tier: 1
+credit: [Yao et al. (Sierra Research)]
 date_added: 2026-06-24
 last_verified: 2026-06-24
 status: live

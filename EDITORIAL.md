@@ -113,6 +113,7 @@ concept note **(CI)**:
 | `section`       | one of: behavior, evaluate, build, models, research, signal, briefings |
 | `audience`      | one of: builder, exec, both                                          |
 | `source_tier`   | one of: 1, 2, 3, original                                           |
+| `credit`        | string or list of strings; required (resource notes), optional for `type: concept` (clause 7.5) |
 | `date_added`    | valid `YYYY-MM-DD`                                                   |
 | `last_verified` | valid `YYYY-MM-DD`                                                   |
 | `status`        | one of: live, deprecated, superseded                                |
@@ -133,6 +134,13 @@ when a title changes and removes any dependence on `aliases` to resolve. A bare 
 allowed only when the link text already equals the filename (for example `[[tau-bench]]`).
 Section-index links use the path form, `[[evaluate/index|Evaluate]]`. This is the standing
 rule for all notes, human- or agent-authored.
+
+7.5 The `credit` field names the person(s), team, or organization credited with originating
+the idea or artifact the note is about: external authors or organizations on resource notes,
+the note's own author on concept notes. **(CI)** It is required on every note except
+`type: concept`, where it is optional. Discipline: credit yourself only for framing you
+genuinely originated, name the lineage where a note builds on prior work, and never claim a
+whole field.
 
 ## 8. What CI does not check
 

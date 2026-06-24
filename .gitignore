@@ -8,6 +8,10 @@ public
 # OS / editor noise
 .DS_Store
 .obsidian
+# Obsidian "Bases" (.base) are an Obsidian-only view layer, not publishable content.
+# Ignored so a stray one (e.g. an accidental Untitled.base) is not committed.
+# Delete this line if you decide to version Bases intentionally.
+*.base
 
 # Editorial guardrail: the forbidden-term list is owner-supplied and never tracked.
 .editorial/denylist.local.txt

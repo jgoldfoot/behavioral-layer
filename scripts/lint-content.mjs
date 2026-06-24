@@ -175,8 +175,8 @@ for (const file of files) {
   // ---- (b) note frontmatter (resource notes + concept notes) ---------------
   const isConcept = String(data.type) === "concept"
   if (!isStructural) {
-    // url is required for resource notes; optional for concept notes.
-    const required = isConcept ? REQUIRED_BASE : [...REQUIRED_BASE, "url"]
+    // url and credit are required for resource notes; both optional for concept notes.
+    const required = isConcept ? REQUIRED_BASE : [...REQUIRED_BASE, "url", "credit"]
     for (const field of required) {
       const v = data[field]
       if (v === undefined || v === null || String(v).trim() === "") {
@@ -215,6 +215,14 @@ for (const file of files) {
     // tags must be a list if present
     if (data.tags !== undefined && data.tags !== null && !Array.isArray(data.tags)) {
       err(file, `tags must be a list (got: ${typeof data.tags})`)
+    }
+    // credit: a string or a list of strings. Required for resource notes (enforced by the
+    // `required` set above); optional for concept notes. Validate shape when present.
+    if (data.credit !== undefined && data.credit !== null) {
+      const c = data.credit
+      const wellFormed =
+        typeof c === "string" || (Array.isArray(c) && c.every((x) => typeof x === "string"))
+      if (!wellFormed) err(file, `credit must be a string or a list of strings`)
     }
     // superseded lifecycle
     if (String(data.status) === "superseded") {

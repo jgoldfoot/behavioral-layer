@@ -21,6 +21,7 @@ type:             # model | tool | framework | paper | repo | benchmark | post |
 section:          # behavior | evaluate | build | models | research | signal | briefings
 audience:         # builder | exec | both
 source_tier:      # 1 | 2 | 3
+credit: []        # who is credited with the idea or artifact this note centers on (external authors/orgs on resource notes; the note's author on concept notes)
 date_added: <% tp.date.now("YYYY-MM-DD") %>
 last_verified: <% tp.date.now("YYYY-MM-DD") %>
 status: live      # live | deprecated | superseded
