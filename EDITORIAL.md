@@ -23,6 +23,8 @@ paper, an official repository, an official model or system card, or a peer-revie
   (for example, a careful technical write-up that links the original).
 - `3` -- weak or unverified source. A note may not rest its core claims on a tier-3
   source; downgrade the claim or find a primary source.
+- `original` -- the note is the author's own synthesis (a concept note), not a report of an
+  external source. Concept notes take this tier and carry no `url` (see section 10).
 
 1.4 The `url` field MUST point to the single best primary source. Additional corroborating
 primary sources belong in the `## Source` section.
@@ -48,6 +50,7 @@ change `status` (clause 5) if the source has moved on.
 
 3.1 Every resource note MUST contain both a `## Builder read` and an `## Exec read`
 section, in that order, and both MUST be substantive. **(CI checks the sections exist.)**
+Concept notes are exempt from this clause (see section 10).
 
 3.2 The builder read answers: what does this mean if you are building? Be concrete about
 mechanisms, defaults, and failure modes.
@@ -58,20 +61,24 @@ reliability, trust, and the decision at hand, in plain language.
 3.4 The `audience` field (`builder` | `exec` | `both`) records the note's primary reader
 for filtering. It does not excuse omitting either read; both reads are always present.
 
-## 4. No named implementations
+## 4. Naming and provenance
 
-4.1 Notes discuss methods, never private implementations. Do NOT name companies, products,
-employers, or clients in your prose.
+4.1 Public artifacts are named freely: models, tools, papers, frameworks, benchmarks, and
+the organizations that publish them. They are the subject matter, so name them plainly.
 
-4.2 In-scope subjects are public artifacts only: public frameworks, public models, public
-papers, and public tools. These may be named, because they are the subject matter.
+4.2 Authors may write from their own professional experience, including work building a
+product's behavioral contract, with internal product names removed. The lesson is in scope;
+the proprietary label is not.
 
-4.3 Never reference a private, internal, or client implementation, even obliquely, and even
-if it would strengthen the point. If a claim can only be supported by something
-non-public, it does not belong here.
+4.3 The following are excluded, and enforced by the denylist: internal product codenames;
+any work, request, meeting, or example scoped to a specific named client; and one specific
+prior client engagement, which is the strictest exclusion. When in doubt about a name from
+your own work, leave it out.
 
-4.4 A forbidden-term denylist (owner-supplied, never committed to the repository) is checked
-in CI as a backstop for clause 4.1. **(CI)** See `.editorial/README.md`.
+4.4 A forbidden-term denylist enforces clause 4.3 in CI. **(CI)** The actual excluded terms
+live ONLY in the untracked denylist (`.editorial/denylist.local.txt` locally, the
+`EDITORIAL_DENYLIST` secret in CI). They are NEVER written into any tracked file, including
+this one. See `.editorial/README.md`.
 
 ## 5. Lifecycle
 
@@ -95,25 +102,27 @@ what the thing is, before any heading.
 
 ## 7. Note structure (enforced shape)
 
-7.1 Required frontmatter fields, with valid values, on every resource note **(CI)**:
+7.1 Required frontmatter fields, with valid values, on every resource note and every
+concept note **(CI)**:
 
 | Field           | Rule                                                                 |
 | --------------- | -------------------------------------------------------------------- |
 | `title`         | non-empty string                                                     |
-| `url`           | required; must be an `http(s)` primary-source URL (clause 1.1)       |
-| `type`          | one of: model, tool, framework, paper, repo, benchmark, post, news   |
+| `url`           | required (resource notes); optional for `type: concept`; if present must be an `http(s)` URL (clause 1.1) |
+| `type`          | one of: model, tool, framework, paper, repo, benchmark, post, news, concept |
 | `section`       | one of: behavior, evaluate, build, models, research, signal, briefings |
 | `audience`      | one of: builder, exec, both                                          |
-| `source_tier`   | one of: 1, 2, 3                                                      |
+| `source_tier`   | one of: 1, 2, 3, original                                           |
 | `date_added`    | valid `YYYY-MM-DD`                                                   |
 | `last_verified` | valid `YYYY-MM-DD`                                                   |
 | `status`        | one of: live, deprecated, superseded                                |
 | `superseded_by` | optional `[[wikilink]]`; required when `status` is `superseded`     |
 | `tags`          | a list (may be empty)                                               |
 
-7.2 Body sections, in this order: one-sentence summary, `## Why it matters`,
+7.2 Resource-note body, in this order: one-sentence summary, `## Why it matters`,
 `## Builder read`, `## Exec read`, `## Caveats`, `## Source`, `## Related`. Use
-`_templates/resource.md` so this shape is automatic.
+`_templates/resource.md` so this shape is automatic. Concept notes use a free-form body
+(see section 10) but remain subject to house style (section 6) and link integrity (7.3).
 
 7.3 All internal links (markdown links and `[[wikilinks]]`) MUST resolve to an existing
 note. **(CI)** Broken links fail the build.
@@ -128,3 +137,23 @@ That judgment is the author's, and it is the most important rule in this documen
 
 9.1 Notes labeled "Format exemplar" exist to prove the template, the CI, and the build.
 They are format references, not editorial canon. Do not cite them as authority.
+
+## 10. Note types
+
+10.1 The library has two note types, set by the `type` field. Structural pages are a third,
+non-note category (clause 10.4).
+
+10.2 **Resource notes** point outward at a public artifact (a model, tool, paper, framework,
+benchmark, repo, post, or news item). They REQUIRE a `url` to a primary source (clause 1.1)
+and the dual-audience body (clause 3.1 and section 7.2).
+
+10.3 **Concept notes** (`type: concept`) are original synthesis: the site's own thinking,
+not a pointer to someone else's artifact. They take no `url`, carry `source_tier: original`,
+and use a free-form body. They remain subject to every other rule: the required frontmatter
+fields and valid enums and dates (section 7.1), the no-em-dash house style (section 6), and
+link integrity (clause 7.3). Any factual claim inside a concept note still links to a
+primary source inline.
+
+10.4 **Structural pages** (any `index.md`, `dashboard.md`, or a note with
+`noteType: index | structural | home`) are neither type. They are exempt from the
+frontmatter schema, but are still link-checked and house-style-checked.

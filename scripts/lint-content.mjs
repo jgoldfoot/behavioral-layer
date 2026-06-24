@@ -26,15 +26,16 @@ const ROOT = resolve(fileURLToPath(import.meta.url), "..", "..")
 const CONTENT = join(ROOT, "content")
 
 const ENUMS = {
-  type: ["model", "tool", "framework", "paper", "repo", "benchmark", "post", "news"],
+  type: ["model", "tool", "framework", "paper", "repo", "benchmark", "post", "news", "concept"],
   section: ["behavior", "evaluate", "build", "models", "research", "signal", "briefings"],
   audience: ["builder", "exec", "both"],
-  source_tier: ["1", "2", "3"],
+  source_tier: ["1", "2", "3", "original"],
   status: ["live", "deprecated", "superseded"],
 }
-const REQUIRED = [
+// Required on every non-structural note. `url` is added on top of this for resource notes
+// but is optional for concept notes (type: concept), which are original synthesis.
+const REQUIRED_BASE = [
   "title",
-  "url",
   "type",
   "section",
   "audience",
@@ -116,15 +117,18 @@ for (const file of files) {
     rel === "dashboard.md" ||
     ["index", "structural", "home"].includes(String(data.noteType || ""))
 
-  // ---- (b) resource-note frontmatter ---------------------------------------
+  // ---- (b) note frontmatter (resource notes + concept notes) ---------------
+  const isConcept = String(data.type) === "concept"
   if (!isStructural) {
-    for (const field of REQUIRED) {
+    // url is required for resource notes; optional for concept notes.
+    const required = isConcept ? REQUIRED_BASE : [...REQUIRED_BASE, "url"]
+    for (const field of required) {
       const v = data[field]
       if (v === undefined || v === null || String(v).trim() === "") {
         err(file, `missing required frontmatter field: ${field}`)
       }
     }
-    // (a) url present and well-formed
+    // (a) url, when present, must be well-formed
     if (data.url && !/^https?:\/\/\S+/i.test(String(data.url))) {
       err(file, `url must be an http(s) primary-source URL (got: ${data.url})`)
     }
@@ -164,12 +168,14 @@ for (const file of files) {
         err(file, `status is "superseded" but superseded_by is empty (clause 5.2)`)
       }
     }
-    // dual-audience sections
-    if (!/^##\s+Builder read\s*$/m.test(body)) {
-      err(file, `missing "## Builder read" section (clause 3.1)`)
-    }
-    if (!/^##\s+Exec read\s*$/m.test(body)) {
-      err(file, `missing "## Exec read" section (clause 3.1)`)
+    // dual-audience sections (resource notes only; concept notes use a free-form body)
+    if (!isConcept) {
+      if (!/^##\s+Builder read\s*$/m.test(body)) {
+        err(file, `missing "## Builder read" section (clause 3.1)`)
+      }
+      if (!/^##\s+Exec read\s*$/m.test(body)) {
+        err(file, `missing "## Exec read" section (clause 3.1)`)
+      }
     }
   }
 
@@ -212,19 +218,19 @@ for (const file of files) {
 }
 
 // ---- report -----------------------------------------------------------------
-const resourceCount = files.filter(
+const schemaChecked = files.filter(
   (f) => basename(f) !== "index.md" && toPosix(relative(CONTENT, f)) !== "dashboard.md",
 ).length
 if (errors.length) {
   console.error(`\nContent lint FAILED with ${errors.length} problem(s):\n`)
   for (const e of errors) console.error("  - " + e)
   console.error(
-    `\nScanned ${files.length} note(s) in content/ (${resourceCount} resource note(s)).`,
+    `\nScanned ${files.length} note(s) in content/ (${schemaChecked} schema-checked note(s)).`,
   )
   console.error("See EDITORIAL.md for the governing rules.\n")
   process.exit(1)
 }
 console.log(
   `Content lint passed: ${files.length} note(s) in content/ ` +
-    `(${resourceCount} resource note(s)), 0 problems.`,
+    `(${schemaChecked} schema-checked note(s)), 0 problems.`,
 )
