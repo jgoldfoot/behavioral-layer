@@ -15,9 +15,8 @@ const config: QuartzConfig = {
     // No third-party analytics until the owner opts in. See README.
     analytics: null,
     locale: "en-US",
-    // TODO(owner): set this to the real published domain before launch.
     // Used for the sitemap, RSS feed, and OG images.
-    baseUrl: "behavioral-layer.example.com",
+    baseUrl: "behaviorlayer.ai",
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "modified",
     theme: {
