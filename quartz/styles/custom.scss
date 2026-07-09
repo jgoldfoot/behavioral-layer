@@ -1,3 +1,19 @@
 @use "./base.scss";
 
-// put your custom CSS here!
+// --- Brand match with bimodal.design ---
+// Rounded corners to match bimodal's 0.75rem radius aesthetic.
+pre,
+.callout,
+article img {
+  border-radius: 0.75rem;
+}
+
+code {
+  border-radius: 0.35rem;
+}
+
+// bimodal underlines section headings; a subtle rule under h2.
+article h2 {
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--lightgray);
+}
