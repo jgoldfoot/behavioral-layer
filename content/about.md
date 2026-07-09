@@ -14,7 +14,6 @@ The Behavioral Layer is curated by Joel Goldfoot, a product design and research 
 
 - [blog.goldfoot.com](https://blog.goldfoot.com)
 - [bimodal.design](https://bimodal.design)
-- [goldfoot.com](https://goldfoot.com)
 - [linkedin.com/in/goldfoot](https://www.linkedin.com/in/goldfoot)
 - [How to Lead Design in the AI Era](https://www.amazon.com/dp/B0FQ33T8P3)
 - [ORCID 0009-0007-1843-2089](https://orcid.org/0009-0007-1843-2089)
