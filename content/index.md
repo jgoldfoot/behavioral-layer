@@ -5,6 +5,12 @@ tags:
   - home
 ---
 
+The Behavioral Layer maps how agentic AI systems behave, disclose, escalate, and fail, and
+who is accountable for it. It is a working reference for the people building and governing AI
+agents.
+
+Curated by Joel Goldfoot. See [[about|how this site is made]].
+
 A public, version-controlled knowledge base on the behavioral, trust, and experience
 layer of agentic products: the layer that sits above raw model capability and decides
 whether an agent is something a person can actually rely on.

@@ -36,6 +36,56 @@ export default (() => {
     )
     const ogImageDefaultPath = `https://${cfg.baseUrl}/static/og-image.png`
 
+    // Structured data (JSON-LD), one consolidated @graph on every page:
+    // a WebSite and its steward (Person + authored Book), plus an Article entity on
+    // note pages (pages that carry a note `type` in frontmatter).
+    const siteUrl = `https://${cfg.baseUrl ?? "behaviorlayer.ai"}`
+    const personId = "https://goldfoot.com/#person"
+    const websiteId = `${siteUrl}/#website`
+    const jsonLdGraph: Record<string, unknown>[] = [
+      {
+        "@type": "WebSite",
+        "@id": websiteId,
+        name: cfg.pageTitle,
+        url: siteUrl,
+        publisher: { "@id": personId },
+      },
+      {
+        "@type": "Person",
+        "@id": personId,
+        name: "Joel Goldfoot",
+        jobTitle: "Product Design & Research Executive",
+        sameAs: [
+          "https://orcid.org/0009-0007-1843-2089",
+          "https://www.linkedin.com/in/goldfoot",
+          "https://blog.goldfoot.com",
+          "https://goldfoot.com",
+          "https://bimodal.design",
+          "https://www.amazon.com/dp/B0FQ33T8P3",
+        ],
+      },
+      {
+        "@type": "Book",
+        "@id": "https://goldfoot.com/#book-how-to-lead-design",
+        name: "How to Lead Design in the AI Era",
+        isbn: "979-8263047221",
+        author: { "@id": personId },
+      },
+    ]
+    if (fileData.frontmatter?.type) {
+      const modified = fileData.dates?.modified
+      jsonLdGraph.push({
+        "@type": "Article",
+        "@id": `${socialUrl}#article`,
+        headline: fileData.frontmatter?.title ?? title,
+        url: socialUrl,
+        isPartOf: { "@id": websiteId },
+        editor: { "@id": personId },
+        ...(modified ? { dateModified: new Date(modified).toISOString() } : {}),
+      })
+    }
+    const jsonLd = { "@context": "https://schema.org", "@graph": jsonLdGraph }
+
     return (
       <head>
         <title>{title}</title>
@@ -85,6 +135,10 @@ export default (() => {
         <link rel="icon" href={iconPath} />
         <meta name="description" content={description} />
         <meta name="generator" content="Quartz" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
 
         {css.map((resource) => CSSResourceToStyleElement(resource, true))}
         {js

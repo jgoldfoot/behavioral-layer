@@ -6,10 +6,8 @@ export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
   afterBody: [],
-  // TODO(owner): add the repo / contact links once the site is hosted.
-  footer: Component.Footer({
-    links: {},
-  }),
+  // Persistent steward / provenance line on every page, linking to /about.
+  footer: Component.StewardFooter(),
 }
 
 // components for pages that display a single page (e.g. a single note)
