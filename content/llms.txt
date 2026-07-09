@@ -1,0 +1,26 @@
+# The Behavioral Layer
+
+> A public research knowledge base on the behavioral, trust, and experience layer of agentic AI products: the layer above raw model capability that decides whether an agent can be relied on. It covers behavioral contracts, guardrails, escalation, failure and repair, confidence and disclosure, evaluation, and governance, written for the people building and governing AI agents.
+
+Steward: Joel Goldfoot, author of "How to Lead Design in the AI Era" and creator of the BiModal Design framework.
+
+How it is made: notes are drafted by AI research agents from primary sources, checked by continuous integration against a public editorial contract, and reviewed and verified by a human editor before publication. Every note traces its claims to a primary source and carries a last_verified date. Provenance is auditable in the public git repository.
+
+## Entry points
+- Home: https://behaviorlayer.ai/
+- About and method: https://behaviorlayer.ai/about
+- Behavior: https://behaviorlayer.ai/behavior/
+- Evaluate: https://behaviorlayer.ai/evaluate/
+- Build: https://behaviorlayer.ai/build/
+- Models: https://behaviorlayer.ai/models/
+- Research: https://behaviorlayer.ai/research/
+- Signal: https://behaviorlayer.ai/signal/
+- Briefings: https://behaviorlayer.ai/briefings/
+
+## Related properties
+- https://blog.goldfoot.com
+- https://bimodal.design
+- https://goldfoot.com
+
+## Source
+- Repository: https://github.com/jgoldfoot/behavioral-layer
