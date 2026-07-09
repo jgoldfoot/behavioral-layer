@@ -9,7 +9,7 @@ import * as Plugin from "./quartz/plugins"
 const config: QuartzConfig = {
   configuration: {
     pageTitle: "The Behavioral Layer",
-    pageTitleSuffix: "",
+    pageTitleSuffix: " · The Behavioral Layer",
     enableSPA: true,
     enablePopovers: true,
     // No third-party analytics until the owner opts in. See README.

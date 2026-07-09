@@ -1,0 +1,8 @@
+# The Behavioral Layer -- https://behaviorlayer.ai
+# A public research knowledge base. All crawlers are welcome, including search engines
+# and AI assistants: the content is public and intended to be read and cited.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://behaviorlayer.ai/sitemap.xml
