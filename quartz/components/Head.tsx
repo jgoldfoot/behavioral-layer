@@ -1,5 +1,5 @@
 import { i18n } from "../i18n"
-import { FullSlug, getFileExtension, joinSegments, pathToRoot } from "../util/path"
+import { FullSlug, getFileExtension, joinSegments, pathToRoot, simplifySlug } from "../util/path"
 import { CSSResourceToStyleElement, JSResourceToScriptElement } from "../util/resources"
 import { googleFontHref, googleFontSubsetHref } from "../util/theme"
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
@@ -13,8 +13,10 @@ export default (() => {
     ctx,
   }: QuartzComponentProps) => {
     const titleSuffix = cfg.pageTitleSuffix ?? ""
-    const title =
-      (fileData.frontmatter?.title ?? i18n(cfg.locale).propertyDefaults.title) + titleSuffix
+    const rawTitle = fileData.frontmatter?.title ?? i18n(cfg.locale).propertyDefaults.title
+    // Append the site name to inner-page titles, but not to the home page (whose title is
+    // already the site name) to avoid "The Behavioral Layer · The Behavioral Layer".
+    const title = rawTitle === cfg.pageTitle ? rawTitle : rawTitle + titleSuffix
     const description =
       fileData.frontmatter?.socialDescription ??
       fileData.frontmatter?.description ??
@@ -42,6 +44,9 @@ export default (() => {
     const siteUrl = `https://${cfg.baseUrl ?? "behaviorlayer.ai"}`
     const personId = "https://goldfoot.com/#person"
     const websiteId = `${siteUrl}/#website`
+    // Clean canonical URL (trailing "index" trimmed) for <link rel="canonical"> and JSON-LD.
+    const canonicalSlug = fileData.slug === "404" ? "/" : simplifySlug(fileData.slug!)
+    const canonicalUrl = canonicalSlug === "/" ? `${siteUrl}/` : `${siteUrl}/${canonicalSlug}`
     const jsonLdGraph: Record<string, unknown>[] = [
       {
         "@type": "WebSite",
@@ -74,13 +79,17 @@ export default (() => {
     ]
     if (fileData.frontmatter?.type) {
       const modified = fileData.dates?.modified
+      const created = fileData.dates?.created
       jsonLdGraph.push({
-        "@type": "Article",
-        "@id": `${socialUrl}#article`,
-        headline: fileData.frontmatter?.title ?? title,
-        url: socialUrl,
+        "@type": "TechArticle",
+        "@id": `${canonicalUrl}#article`,
+        headline: fileData.frontmatter?.title ?? rawTitle,
+        description,
+        url: canonicalUrl,
         isPartOf: { "@id": websiteId },
+        publisher: { "@id": personId },
         editor: { "@id": personId },
+        ...(created ? { datePublished: new Date(created).toISOString() } : {}),
         ...(modified ? { dateModified: new Date(modified).toISOString() } : {}),
       })
     }
@@ -132,6 +141,7 @@ export default (() => {
           </>
         )}
 
+        <link rel="canonical" href={canonicalUrl} />
         <link rel="icon" href={iconPath} />
         <meta name="description" content={description} />
         <meta name="generator" content="Quartz" />
