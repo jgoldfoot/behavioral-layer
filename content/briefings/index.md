@@ -1,5 +1,6 @@
 ---
 title: Briefings
+description: "Weekly, decision-oriented digests of what changed in agent behavior and trust, synthesized from Signal entries for people deciding whether and how to ship agentic products."
 noteType: index
 section: briefings
 tags:

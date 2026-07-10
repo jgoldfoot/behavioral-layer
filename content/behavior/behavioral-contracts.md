@@ -35,6 +35,8 @@ Start with a contract written in plain language, dozens of clauses organized by 
 
 When I decomposed a production contract this way, close to half the clauses turned out to be enforceable in deterministic code, with no model judgment involved at all. That finding is the argument for the whole discipline. Most of an AI system's behavior is code-enforceable once someone does the specification work. The behavioral layer is not a softer, vibes-based cousin of engineering. It is a real architecture: a thin, constrained model wrapped in deterministic services that check it, with the contract as the source both design and engineering build from.
 
+*A note on provenance: the production work described here is the author's own. The specific system, the client, and the underlying clause counts are withheld under confidentiality. What is shared is the finding, not the artifact that produced it.*
+
 ## Why it is not documentation
 
 A behavioral contract is not a description of a system someone already shipped. It is the thing the system gets built from. The prose exists for human consensus. The normalized register exists for machine enforcement. The same artifact serves both, and that is what makes it infrastructure instead of paperwork.

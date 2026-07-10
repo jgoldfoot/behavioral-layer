@@ -1,5 +1,6 @@
 ---
 title: The Behavioral Layer
+description: "The behavioral layer of agentic AI: how agents behave, disclose, escalate, and fail, and who is accountable. A public, version-controlled reference built on primary sources."
 noteType: index
 tags:
   - home
@@ -38,8 +39,3 @@ repository root: accuracy is the brand.
 - [[research/index|Research]] -- papers, where the synthesis is the value.
 - [[signal/index|Signal]] -- dated "what shipped / what changed" entries.
 - [[briefings/index|Briefings]] -- the exec lens and weekly digest.
-
-## Utilities
-
-- [[dashboard|Dashboard]] -- freshness, audience, and lifecycle views (renders with the
-  Dataview plugin in Obsidian).

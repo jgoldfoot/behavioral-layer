@@ -11,7 +11,8 @@ export default (() => {
     return (
       <footer class={`${displayClass ?? ""}`}>
         <p>
-          {cfg.pageTitle} · <a href="/about">How this site is made</a>
+          {cfg.pageTitle} · <a href="/about">How this site is made</a> ·{" "}
+          <a href="/index.xml">RSS</a>
         </p>
         <p class="copyright" style={{ marginTop: "0.4rem", fontSize: "0.85em", opacity: 0.7 }}>
           © {year} Joel Goldfoot
