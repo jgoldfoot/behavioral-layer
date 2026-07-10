@@ -1,5 +1,6 @@
-const userPref = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark"
-const currentTheme = localStorage.getItem("theme") ?? userPref
+// The site defaults to dark for every first-time visitor, regardless of system
+// preference. An explicit toggle choice persists and always wins.
+const currentTheme = localStorage.getItem("theme") ?? "dark"
 document.documentElement.setAttribute("saved-theme", currentTheme)
 
 const emitThemeChangeEvent = (theme: "light" | "dark") => {
@@ -18,20 +19,11 @@ document.addEventListener("nav", () => {
     emitThemeChangeEvent(newTheme)
   }
 
-  const themeChange = (e: MediaQueryListEvent) => {
-    const newTheme = e.matches ? "dark" : "light"
-    document.documentElement.setAttribute("saved-theme", newTheme)
-    localStorage.setItem("theme", newTheme)
-    emitThemeChangeEvent(newTheme)
-  }
-
   for (const darkmodeButton of document.getElementsByClassName("darkmode")) {
     darkmodeButton.addEventListener("click", switchTheme)
     window.addCleanup(() => darkmodeButton.removeEventListener("click", switchTheme))
   }
 
-  // Listen for changes in prefers-color-scheme
-  const colorSchemeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)")
-  colorSchemeMediaQuery.addEventListener("change", themeChange)
-  window.addCleanup(() => colorSchemeMediaQuery.removeEventListener("change", themeChange))
+  // No prefers-color-scheme listener: dark is the default, and only an explicit
+  // toggle choice changes it. OS theme transitions do not flip the site.
 })

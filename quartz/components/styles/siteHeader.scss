@@ -1,0 +1,77 @@
+@use "../../styles/variables.scss" as *;
+
+// The header slot renders above the content grid (see renderPage.tsx), so it
+// spans the full page width. Sticky, slim, hairline-bordered.
+.page > header {
+  margin: 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--light);
+  border-bottom: 1px solid var(--lightgray);
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 56px;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+
+  .site-header-brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    font-weight: 600;
+    font-size: 15.5px;
+    letter-spacing: -0.01em;
+    color: var(--dark);
+    text-decoration: none;
+
+    svg {
+      display: block;
+      flex: none;
+    }
+
+    .layer-bar-mid {
+      fill: var(--secondary);
+    }
+
+    .layer-bar-outer {
+      fill: var(--gray);
+      opacity: 0.55;
+    }
+  }
+
+  .site-header-nav {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    font-size: 13.5px;
+
+    a {
+      color: var(--darkgray);
+      text-decoration: none;
+
+      &:hover {
+        color: var(--secondary);
+      }
+    }
+
+    .darkmode {
+      margin: 0;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  @media all and ($mobile) {
+    padding: 0 1rem;
+
+    .site-header-nav {
+      gap: 14px;
+    }
+  }
+}

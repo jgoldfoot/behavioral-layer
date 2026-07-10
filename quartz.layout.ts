@@ -4,7 +4,8 @@ import * as Component from "./quartz/components"
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
-  header: [],
+  // The site-level top bar: layer mark + wordmark, ranked nav, theme toggle.
+  header: [Component.SiteHeader()],
   afterBody: [],
   // Persistent steward / provenance line on every page, linking to /about.
   footer: Component.StewardFooter(),
@@ -18,11 +19,11 @@ export const defaultContentPageLayout: PageLayout = {
       condition: (page) => page.fileData.slug !== "index",
     }),
     Component.ArticleTitle(),
-    Component.ContentMeta(),
+    // Provenance strip: the note's CI-enforced frontmatter as visible receipts.
+    Component.Provenance(),
     Component.TagList(),
   ],
   left: [
-    Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
     Component.Flex({
       components: [
@@ -30,24 +31,25 @@ export const defaultContentPageLayout: PageLayout = {
           Component: Component.Search(),
           grow: true,
         },
-        { Component: Component.Darkmode() },
-        { Component: Component.ReaderMode() },
       ],
     }),
-    Component.Explorer(),
+    // Outline | Map: the text tree and the neighborhood galaxy as peer
+    // wayfinding modalities, with a drag splitter on the panel edge.
+    Component.NavPanel(Component.Explorer()),
   ],
+  // TOC and backlinks do the contextual work; the graph is an ambient thumbnail
+  // whose expand icon leads to the /graph destination page.
   right: [
-    Component.Graph(),
     Component.DesktopOnly(Component.TableOfContents()),
     Component.Backlinks(),
+    Component.Graph(),
   ],
 }
 
 // components for pages that display lists of pages  (e.g. tags or folders)
 export const defaultListPageLayout: PageLayout = {
-  beforeBody: [Component.Breadcrumbs(), Component.ArticleTitle(), Component.ContentMeta()],
+  beforeBody: [Component.Breadcrumbs(), Component.ArticleTitle()],
   left: [
-    Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
     Component.Flex({
       components: [
@@ -55,10 +57,11 @@ export const defaultListPageLayout: PageLayout = {
           Component: Component.Search(),
           grow: true,
         },
-        { Component: Component.Darkmode() },
       ],
     }),
-    Component.Explorer(),
+    // Outline | Map: the text tree and the neighborhood galaxy as peer
+    // wayfinding modalities, with a drag splitter on the panel edge.
+    Component.NavPanel(Component.Explorer()),
   ],
   right: [],
 }
