@@ -64,7 +64,6 @@ export default (() => {
           "https://orcid.org/0009-0007-1843-2089",
           "https://www.linkedin.com/in/goldfoot",
           "https://blog.goldfoot.com",
-          "https://goldfoot.com",
           "https://bimodal.design",
           "https://www.amazon.com/dp/B0FQ33T8P3",
         ],
