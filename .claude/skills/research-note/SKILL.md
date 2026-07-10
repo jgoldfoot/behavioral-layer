@@ -81,7 +81,9 @@ caution is when coverage brushes against the steward's own non-public work.
 
 ## Discipline
 - Bounded runs: at most 3 notes per invocation for v1.
-- On-demand only. No auto-merge. No scheduled runs until Joel promotes the pipeline.
+- On-demand only for this skill. No auto-merge, ever. The scheduled weekly cadence is now
+  promoted and lives in `.claude/skills/weekly-signal/SKILL.md`; it likewise proposes via PR
+  and never merges.
 - One note = one clear primary source. If a topic needs three sources to stand up, it is
   probably an outline for Joel, not a resource note.
 
