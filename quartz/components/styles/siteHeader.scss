@@ -9,12 +9,19 @@
   z-index: 100;
   background-color: var(--light);
   border-bottom: 1px solid var(--lightgray);
+
+  // On mobile the sidebar's search/explorer bar owns the sticky top slot
+  // (stock Quartz behavior); a second sticky bar would cover it when scrolled.
+  @media all and ($mobile) {
+    position: static;
+  }
 }
 
 .site-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 14px;
   width: 100%;
   height: 56px;
   padding: 0 1.5rem;
@@ -29,6 +36,7 @@
     letter-spacing: -0.01em;
     color: var(--dark);
     text-decoration: none;
+    white-space: nowrap;
 
     svg {
       display: block;
@@ -68,10 +76,17 @@
   }
 
   @media all and ($mobile) {
-    padding: 0 1rem;
+    height: 48px;
+    padding: 0 0.75rem;
+
+    .site-header-brand {
+      gap: 8px;
+      font-size: 13.5px;
+    }
 
     .site-header-nav {
-      gap: 14px;
+      gap: 11px;
+      font-size: 12.5px;
     }
   }
 }

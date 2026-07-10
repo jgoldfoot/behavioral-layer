@@ -1,7 +1,12 @@
 @use "../../styles/variables.scss" as *;
 
 .nav-panel {
-  position: relative;
+  // Positioning context for the splitter, desktop only. On mobile, a positioned
+  // wrapper would re-anchor Quartz's absolutely-positioned slide-out explorer
+  // overlay away from the sidebar and leave it bleeding over the article.
+  @media all and ($desktop) {
+    position: relative;
+  }
 
   .nav-panel-tabs {
     display: flex;

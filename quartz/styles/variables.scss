@@ -37,8 +37,9 @@ $mobileGrid: (
 );
 $tabletGrid: (
   templateRows: "auto auto auto auto",
-  // First column driven by a CSS variable so the nav panel's splitter can resize it.
-  templateColumns: "var(--nav-width, #{$sidePanelWidth}) auto",
+  // Fixed on tablet: the splitter is a desktop-only instrument, so a persisted
+  // --nav-width must never squeeze the tablet content column.
+  templateColumns: "#{$sidePanelWidth} auto",
   rowGap: "5px",
   columnGap: "5px",
   templateAreas:

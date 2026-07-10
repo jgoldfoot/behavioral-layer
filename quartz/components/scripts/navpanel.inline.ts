@@ -4,9 +4,10 @@ import { getFullSlug, simplifySlug } from "../../util/path"
 const MIN_W = 240
 const clampW = (w: number) => Math.min(Math.max(w, MIN_W), Math.floor(window.innerWidth * 0.5))
 
-// Restore the persisted panel width before first paint settles.
+// Restore the persisted panel width before first paint settles. Desktop only:
+// the splitter is a desktop instrument, and tablet/mobile grids must stay stock.
 const savedW = localStorage.getItem("bl-nav-width")
-if (savedW) {
+if (savedW && window.matchMedia("(min-width: 1200px)").matches) {
   const w = parseInt(savedW, 10)
   if (!isNaN(w)) document.documentElement.style.setProperty("--nav-width", clampW(w) + "px")
 }
