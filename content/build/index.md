@@ -1,5 +1,6 @@
 ---
 title: Build
+description: "Agent frameworks, orchestration, memory, tool use, and harnesses, read for how they support or undermine behavioral contracts, escalation, and repair."
 noteType: index
 section: build
 tags:

@@ -1,5 +1,6 @@
 ---
 title: Research
+description: "Peer-reviewed and preprint research on agent behavior, trust, and human-agent interaction, distilled into findings a builder or an exec can act on."
 noteType: index
 section: research
 tags:

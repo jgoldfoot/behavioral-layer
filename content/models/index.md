@@ -1,5 +1,6 @@
 ---
 title: Models
+description: "Frontier models read through the agent-behavior lens: tool use, instruction-following, refusal, long-horizon reliability, and the behavioral guarantees their makers document. Not a leaderboard."
 noteType: index
 section: models
 tags:

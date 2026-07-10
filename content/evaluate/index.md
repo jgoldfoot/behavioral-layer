@@ -1,5 +1,6 @@
 ---
 title: Evaluate
+description: "Evals, benchmarks, observability, and red-teaming for agent behavior: how to measure whether an agent escalates, discloses, and recovers correctly, not just its raw capability."
 noteType: index
 section: evaluate
 tags:

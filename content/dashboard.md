@@ -1,15 +1,16 @@
 ---
 title: Dashboard
 noteType: index
+draft: true
 tags:
   - dashboard
 ---
 
-Operational views over the resource notes. These queries render in Obsidian with the
-**Dataview** community plugin installed; without it they appear as code blocks (including
-on the published site). Each query selects resource notes by the presence of a `url`
-field, so it works whether your Obsidian vault root is the repository or the `content`
-folder.
+Operational views over the resource notes, kept as an Obsidian-only maintenance page and
+excluded from the published site. These queries render in Obsidian with the **Dataview**
+community plugin installed; without it they appear as code blocks. Each query selects
+resource notes by the presence of a `url` field, so it works whether your Obsidian vault
+root is the repository or the `content` folder.
 
 ## Needs reverification
 

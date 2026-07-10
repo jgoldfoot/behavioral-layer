@@ -1,5 +1,6 @@
 ---
 title: Signal
+description: "A dated feed of what shipped and what changed in agent behavior: releases, changelogs, benchmark results, and documented behavior changes, each tied to a primary source."
 noteType: index
 section: signal
 tags:

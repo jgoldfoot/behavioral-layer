@@ -1,5 +1,6 @@
 ---
 title: Behavior
+description: "The behavioral layer itself: contracts, guardrails, escalation, failure and repair, confidence, and disclosure. The rules and recovery paths that decide whether an agent is trustworthy in use."
 noteType: index
 section: behavior
 tags:
