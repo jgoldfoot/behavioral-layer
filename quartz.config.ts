@@ -71,7 +71,8 @@ const config: QuartzConfig = {
       Plugin.GitHubFlavoredMarkdown(),
       Plugin.TableOfContents(),
       Plugin.CrawlLinks({ markdownLinkResolution: "shortest", openLinksInNewTab: true }),
-      Plugin.Description(),
+      // Cap auto-derived meta descriptions near the SERP display limit.
+      Plugin.Description({ maxDescriptionLength: 165 }),
       Plugin.Latex({ renderEngine: "katex" }),
     ],
     filters: [Plugin.RemoveDrafts()],
@@ -91,6 +92,8 @@ const config: QuartzConfig = {
       Plugin.NotFoundPage(),
       // The /graph destination page: full corpus map (2D) + galaxy (3D).
       Plugin.GraphPage(),
+      // GEO: the full corpus as one markdown document at /llms-full.txt.
+      Plugin.LlmsFullTxt(),
       // Comment out CustomOgImages to speed up build time
       Plugin.CustomOgImages(),
     ],

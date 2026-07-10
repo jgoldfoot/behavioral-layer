@@ -120,9 +120,21 @@ export const ContentIndex: QuartzEmitterPlugin<Partial<Options>> = (opts) => {
       }
 
       if (opts?.enableSiteMap) {
+        // Include the /graph destination page: it is emitted outside the content
+        // pipeline (see emitters/graphPage.tsx) but is a real, indexable URL.
+        const sitemapIndex: ContentIndexMap = new Map(linkIndex)
+        sitemapIndex.set("graph" as FullSlug, {
+          slug: "graph" as FullSlug,
+          filePath: "" as ContentDetails["filePath"],
+          title: "Site graph",
+          links: [],
+          tags: [],
+          content: "",
+          date: new Date(),
+        })
         yield write({
           ctx,
-          content: generateSiteMap(cfg, linkIndex),
+          content: generateSiteMap(cfg, sitemapIndex),
           slug: "sitemap" as FullSlug,
           ext: ".xml",
         })

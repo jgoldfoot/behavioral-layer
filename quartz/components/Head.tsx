@@ -47,6 +47,10 @@ export default (() => {
     // Clean canonical URL (trailing "index" trimmed) for <link rel="canonical"> and JSON-LD.
     const canonicalSlug = fileData.slug === "404" ? "/" : simplifySlug(fileData.slug!)
     const canonicalUrl = canonicalSlug === "/" ? `${siteUrl}/` : `${siteUrl}/${canonicalSlug}`
+    const isNote = Boolean(fileData.frontmatter?.type)
+    const created = fileData.dates?.created
+    const modified = fileData.dates?.modified
+    const tags: string[] = (fileData.frontmatter?.tags as string[] | undefined) ?? []
     const jsonLdGraph: Record<string, unknown>[] = [
       {
         "@type": "WebSite",
@@ -76,9 +80,8 @@ export default (() => {
         author: { "@id": personId },
       },
     ]
-    if (fileData.frontmatter?.type) {
-      const modified = fileData.dates?.modified
-      const created = fileData.dates?.created
+    if (isNote) {
+      const section = canonicalSlug.split("/")[0]
       jsonLdGraph.push({
         "@type": "TechArticle",
         "@id": `${canonicalUrl}#article`,
@@ -86,10 +89,35 @@ export default (() => {
         description,
         url: canonicalUrl,
         isPartOf: { "@id": websiteId },
+        // Author is the field E-E-A-T and AI-engine attribution actually read.
+        author: { "@id": personId },
         publisher: { "@id": personId },
         editor: { "@id": personId },
+        ...(section ? { articleSection: section } : {}),
+        ...(tags.length ? { keywords: tags.join(", ") } : {}),
         ...(created ? { datePublished: new Date(created).toISOString() } : {}),
         ...(modified ? { dateModified: new Date(modified).toISOString() } : {}),
+      })
+    }
+    // Breadcrumb trail mirroring the visible breadcrumbs: Home > Section > Page.
+    if (canonicalSlug !== "/") {
+      const parts = canonicalSlug.replace(/\/$/, "").split("/")
+      const items: Record<string, unknown>[] = [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
+      ]
+      if (parts.length === 2) {
+        items.push({
+          "@type": "ListItem",
+          position: 2,
+          name: parts[0].charAt(0).toUpperCase() + parts[0].slice(1),
+          item: `${siteUrl}/${parts[0]}/`,
+        })
+      }
+      items.push({ "@type": "ListItem", position: items.length + 1, name: rawTitle })
+      jsonLdGraph.push({
+        "@type": "BreadcrumbList",
+        "@id": `${canonicalUrl}#breadcrumbs`,
+        itemListElement: items,
       })
     }
     const jsonLd = { "@context": "https://schema.org", "@graph": jsonLdGraph }
@@ -113,7 +141,14 @@ export default (() => {
 
         <meta name="og:site_name" content={cfg.pageTitle}></meta>
         <meta property="og:title" content={title} />
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content={isNote ? "article" : "website"} />
+        {isNote && created && (
+          <meta property="article:published_time" content={new Date(created).toISOString()} />
+        )}
+        {isNote && modified && (
+          <meta property="article:modified_time" content={new Date(modified).toISOString()} />
+        )}
+        {isNote && <meta property="article:author" content="Joel Goldfoot" />}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
