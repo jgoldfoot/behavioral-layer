@@ -126,6 +126,11 @@ export default (() => {
       <head>
         <title>{title}</title>
         <meta charSet="utf-8" />
+        {/* Google Search Console ownership; must remain for the property to stay verified. */}
+        <meta
+          name="google-site-verification"
+          content="DI3bl4cwX3NtTcqeUalpYIJ3VV2i4uyHUQNPvzxTeBU"
+        />
         {cfg.theme.cdnCaching && cfg.theme.fontOrigin === "googleFonts" && (
           <>
             <link rel="preconnect" href="https://fonts.googleapis.com" />
