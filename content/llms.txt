@@ -6,21 +6,32 @@ Steward: Joel Goldfoot, author of "How to Lead Design in the AI Era" and creator
 
 How it is made: notes are drafted by AI research agents from primary sources, checked by continuous integration against a public editorial contract, and reviewed and verified by a human editor before publication. Every note traces its claims to a primary source and carries a last_verified date. Provenance is auditable in the public git repository.
 
+Scale and cadence: roughly fifty notes across seven sections, growing on a weekly
+research cadence. New Signal entries and briefings land most weeks.
+
+## Full corpus for machines
+- Every published note in one markdown document: https://behaviorlayer.ai/llms-full.txt
+
 ## Entry points
 - Home: https://behaviorlayer.ai/
 - About and method: https://behaviorlayer.ai/about
-- Behavior: https://behaviorlayer.ai/behavior/
-- Evaluate: https://behaviorlayer.ai/evaluate/
-- Build: https://behaviorlayer.ai/build/
-- Models: https://behaviorlayer.ai/models/
-- Research: https://behaviorlayer.ai/research/
-- Signal: https://behaviorlayer.ai/signal/
-- Briefings: https://behaviorlayer.ai/briefings/
+- Site graph (map of every note): https://behaviorlayer.ai/graph
+- Behavior (the thesis core): https://behaviorlayer.ai/behavior/
+- Evaluate (benchmarks and audits): https://behaviorlayer.ai/evaluate/
+- Build (frameworks and protocols): https://behaviorlayer.ai/build/
+- Models (system cards, read for behavior): https://behaviorlayer.ai/models/
+- Research (the evidence base): https://behaviorlayer.ai/research/
+- Signal (dated events feed): https://behaviorlayer.ai/signal/
+- Briefings (weekly exec digests): https://behaviorlayer.ai/briefings/
+
+## Feeds and indexes
+- Sitemap: https://behaviorlayer.ai/sitemap.xml
+- RSS: https://behaviorlayer.ai/index.xml
 
 ## Related properties
 - https://blog.goldfoot.com
 - https://bimodal.design
-- https://goldfoot.com
 
 ## Source
 - Repository: https://github.com/jgoldfoot/behavioral-layer
+- Editorial contract: https://github.com/jgoldfoot/behavioral-layer/blob/main/EDITORIAL.md
