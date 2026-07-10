@@ -17,3 +17,11 @@ article h2 {
   padding-bottom: 0.3rem;
   border-bottom: 1px solid var(--lightgray);
 }
+
+// Quotes get a tinted pull treatment: emerald marks emphasis, not decoration.
+blockquote {
+  border-left: 3px solid var(--secondary);
+  background-color: color-mix(in srgb, var(--secondary) 7%, transparent);
+  border-radius: 0 10px 10px 0;
+  padding: 0.6rem 1rem;
+}

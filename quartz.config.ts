@@ -89,6 +89,8 @@ const config: QuartzConfig = {
       Plugin.Static(),
       Plugin.Favicon(),
       Plugin.NotFoundPage(),
+      // The /graph destination page: full corpus map (2D) + galaxy (3D).
+      Plugin.GraphPage(),
       // Comment out CustomOgImages to speed up build time
       Plugin.CustomOgImages(),
     ],

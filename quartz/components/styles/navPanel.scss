@@ -1,0 +1,92 @@
+@use "../../styles/variables.scss" as *;
+
+.nav-panel {
+  position: relative;
+
+  .nav-panel-tabs {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 8px;
+
+    .nav-tab {
+      font-family: var(--bodyFont);
+      font-size: 12px;
+      border: 1px solid var(--lightgray);
+      background: transparent;
+      color: var(--gray);
+      border-radius: 8px;
+      padding: 4px 12px;
+      cursor: pointer;
+
+      &.on {
+        background-color: color-mix(in srgb, var(--secondary) 10%, transparent);
+        border-color: transparent;
+        color: var(--secondary);
+        font-weight: 600;
+      }
+
+      &:focus-visible {
+        outline: 2px solid var(--secondary);
+        outline-offset: 2px;
+      }
+    }
+  }
+
+  .nav-panel-map {
+    .nav-panel-canvas {
+      display: block;
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid var(--lightgray);
+      cursor: grab;
+      // The galaxy is a space viewport regardless of theme.
+      background-color: #0b0e14;
+    }
+
+    .nav-panel-foot {
+      font-size: 11px;
+      color: var(--gray);
+      padding: 6px 2px;
+
+      a {
+        color: var(--secondary);
+        text-decoration: none;
+      }
+    }
+  }
+
+  // The grab-and-drag divider: sits at the panel's right edge, resizes the
+  // whole left column via --nav-width. Desktop instrument only.
+  .nav-splitter {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -1.25rem;
+    width: 6px;
+    cursor: col-resize;
+    border-radius: 3px;
+
+    &:hover,
+    &.live {
+      background-color: var(--secondary);
+      opacity: 0.5;
+    }
+
+    @media all and not ($desktop) {
+      display: none;
+    }
+  }
+
+  // Mobile: the outline stands alone; tabs, map, and splitter are desktop tools.
+  @media all and ($mobile) {
+    .nav-panel-tabs,
+    .nav-panel-map,
+    .nav-splitter {
+      display: none !important;
+    }
+
+    .nav-panel-outline {
+      display: block !important;
+    }
+  }
+}

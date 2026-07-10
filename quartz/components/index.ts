@@ -2,6 +2,7 @@ import Content from "./pages/Content"
 import TagContent from "./pages/TagContent"
 import FolderContent from "./pages/FolderContent"
 import NotFound from "./pages/404"
+import GraphPage from "./pages/GraphPage"
 import ArticleTitle from "./ArticleTitle"
 import Darkmode from "./Darkmode"
 import ReaderMode from "./ReaderMode"
@@ -17,6 +18,9 @@ import Backlinks from "./Backlinks"
 import Search from "./Search"
 import Footer from "./Footer"
 import StewardFooter from "./StewardFooter"
+import SiteHeader from "./SiteHeader"
+import Provenance from "./Provenance"
+import NavPanel from "./NavPanel"
 import DesktopOnly from "./DesktopOnly"
 import MobileOnly from "./MobileOnly"
 import RecentNotes from "./RecentNotes"
@@ -44,10 +48,14 @@ export {
   Search,
   Footer,
   StewardFooter,
+  SiteHeader,
+  Provenance,
+  NavPanel,
   DesktopOnly,
   MobileOnly,
   RecentNotes,
   NotFound,
+  GraphPage,
   Breadcrumbs,
   Comments,
   Flex,
