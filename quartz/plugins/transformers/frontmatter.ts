@@ -100,7 +100,10 @@ export const FrontMatter: QuartzTransformerPlugin<Partial<Options>> = (userOpts)
 
             const socialImage = coalesceAliases(data, ["socialImage", "image", "cover"])
 
-            const created = coalesceAliases(data, ["created", "date"])
+            // This site's editorial schema uses date_added / last_verified; map them
+            // so machine-readable dates come from frontmatter, never from git or
+            // filesystem timestamps (which equal build time in CI).
+            const created = coalesceAliases(data, ["created", "date", "date_added"])
             if (created) {
               data.created = created
             }
@@ -110,11 +113,12 @@ export const FrontMatter: QuartzTransformerPlugin<Partial<Options>> = (userOpts)
               "lastmod",
               "updated",
               "last-modified",
+              "last_verified",
             ])
             if (modified) data.modified = modified
             data.modified ||= created // if modified is not set, use created
 
-            const published = coalesceAliases(data, ["published", "publishDate", "date"])
+            const published = coalesceAliases(data, ["published", "publishDate", "date", "date_added"])
             if (published) data.published = published
 
             if (socialImage) data.socialImage = socialImage
