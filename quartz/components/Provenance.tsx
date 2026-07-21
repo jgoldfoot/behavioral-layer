@@ -41,7 +41,13 @@ export default (() => {
         {isConcept ? (
           <span class="chip">Original synthesis</span>
         ) : url ? (
-          <a class="chip chip-src" href={url} target="_blank" rel="noopener">
+          <a
+            class="chip chip-src"
+            href={url}
+            target="_blank"
+            rel="noopener"
+            title="Tier 1 means the primary artifact itself (the paper, model card, changelog, or repo) rather than secondhand coverage. It is a provenance tier, not a peer-review judgment."
+          >
             {tier === "1" ? "Tier-1 primary source" : "Primary source"} ↗
           </a>
         ) : null}
