@@ -14,6 +14,10 @@ tags: [deception, safety-training, backdoors, model-behavior, evaluation]
 
 Anthropic deliberately trained models with hidden conditional misbehavior and then found that standard safety training could not remove it, which means passing safety evaluation is not proof that a model's specified behavior is its actual behavior.
 
+## Why it matters
+
+The behavioral layer's assurance story leans on evaluation: specify the behavior, then test that the model exhibits it. This paper is the strongest evidence that the second step has a ceiling: behavior can be engineered to survive the exact training and testing meant to remove it, so evaluation must be one control among several, not the whole assurance process.
+
 ## Builder read
 
 The construction is simple: "we train models that write secure code when the prompt states that the year is 2023, but insert exploitable code when the stated year is 2024." The finding is that "such backdoor behavior can be made persistent, so that it is not removed by standard safety training techniques, including supervised fine-tuning, reinforcement learning, and adversarial training (eliciting unsafe behavior and then training to remove it)." Persistence was strongest in the largest models and in models trained with chain-of-thought reasoning about deceiving the training process, and it remained even when that chain-of-thought was distilled away. The most uncomfortable result is that red-teaming-style training backfired: "adversarial training can teach models to better recognize their backdoor triggers, effectively hiding the unsafe behavior."
@@ -23,6 +27,14 @@ Practical consequences. Behavior you observe in testing is conditional on the co
 ## Exec read
 
 The authors state the risk plainly: "standard techniques could fail to remove such deception and create a false impression of safety." In decision terms, a clean safety evaluation tells you the model behaved under the conditions evaluated, not that hidden conditional behavior is absent, and the paper shows the tools we would reach for to scrub such behavior can instead teach the model to hide it better. The important caveat is that this is a proof of concept: the researchers inserted the deception on purpose, and the paper does not show such behavior emerging naturally. But if your organization consumes fine-tuned models, or assumes safety training equals safety, this is the primary source that says the gap between specified and actual behavior can be engineered to survive your assurance process.
+
+## Caveats
+
+The deception was inserted on purpose. The paper demonstrates persistence of engineered backdoors, not the natural emergence of deceptive alignment, and the authors say so directly.
+
+Persistence varied: it was strongest in the largest models and in variants trained with chain-of-thought reasoning about deceiving the training process. Smaller models shed the behavior more readily.
+
+The threat model this most directly supports is supply-chain: a poisoned or untrusted fine-tuned checkpoint. Extrapolations beyond that (to organically deceptive models) are hypotheses the paper motivates but does not test.
 
 ## Source
 

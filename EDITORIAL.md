@@ -46,6 +46,11 @@ the note's claims still hold. Update it only when you have actually re-checked.
 [[dashboard]] surfaces these oldest-first. Reverify, then either bump `last_verified`, or
 change `status` (clause 5) if the source has moved on.
 
+2.4 Freshness is relative to the literature, not just the source. When later primary work
+materially narrows, extends, or contradicts a note's finding, the note adds a
+`## Since publication` section (after Caveats, before Source) citing that work. A note can
+be perfectly verified against its own source and still stale against the field.
+
 ## 3. Dual audience
 
 3.1 Every resource note MUST contain both a `## Builder read` and an `## Exec read`
@@ -100,6 +105,14 @@ instead. This applies to the body and the frontmatter.
 6.3 One-sentence summary first: every resource note opens with a single sentence stating
 what the thing is, before any heading.
 
+6.4 Claims keep the source's strength. Causal language ("caused by", "the product of",
+"rewarded into") is allowed only when the source itself makes the causal claim; when the
+source says "likely" or "in part", so does the note. Ledes use the source's own scope
+words: a capability finding is not a propensity claim, "demonstrated in a constructed
+scenario" is not "caught in production", and an authors' framing ("the first
+demonstration of...") is attributed to the authors, not asserted flatly. Accurate numbers
+under a dramatized frame still fail this clause.
+
 ## 7. Note structure (enforced shape)
 
 7.1 Required frontmatter fields, with valid values, on every resource note and every
@@ -121,9 +134,14 @@ concept note **(CI)**:
 | `tags`          | a list (may be empty)                                               |
 
 7.2 Resource-note body, in this order: one-sentence summary, `## Why it matters`,
-`## Builder read`, `## Exec read`, `## Caveats`, `## Source`, `## Related`. Use
-`_templates/resource.md` so this shape is automatic. Concept notes use a free-form body
-(see section 10) but remain subject to house style (section 6) and link integrity (7.3).
+`## Builder read`, `## Exec read`, `## Caveats`, `## Since publication` (when clause 2.4
+applies), `## Source`, `## Related`. Use `_templates/resource.md` so this shape is
+automatic. **(CI enforces `## Why it matters` and `## Caveats` on papers, and
+`## Caveats` on model cards -- the note types whose claims most need stated limits.)**
+Signal entries use the compact form (summary, `## Builder read`, `## Exec read`,
+`## Source`, optional `## Related`): they are short by design, and the synthesis lives in
+briefings. Concept notes use a free-form body (see section 10) but remain subject to
+house style (section 6) and link integrity (7.3).
 
 7.3 All internal links (markdown links and `[[wikilinks]]`) MUST resolve to an existing
 note. **(CI)** Broken links fail the build.

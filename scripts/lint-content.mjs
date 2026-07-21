@@ -239,6 +239,15 @@ for (const file of files) {
       if (!/^##\s+Exec read\s*$/m.test(body)) {
         err(file, `missing "## Exec read" section (clause 3.1)`)
       }
+      // Papers and model cards carry stated limits (clause 7.2): the note types
+      // whose claims most need them. Signal entries use the compact form.
+      const t = String(data.type)
+      if ((t === "paper" || t === "model") && !/^##\s+Caveats\s*$/m.test(body)) {
+        err(file, `missing "## Caveats" section (clause 7.2: required on papers and model cards)`)
+      }
+      if (t === "paper" && !/^##\s+Why it matters\s*$/m.test(body)) {
+        err(file, `missing "## Why it matters" section (clause 7.2: required on papers)`)
+      }
     }
   }
 
