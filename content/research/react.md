@@ -14,6 +14,10 @@ tags: [agents, reasoning, tool-use, interpretability, prompting]
 
 ReAct is the 2022 paper behind the modern agent loop: prompt a model to interleave reasoning with actions and it plans better, grounds itself in external sources, and leaves a trajectory a human can actually follow.
 
+## Why it matters
+
+Every think-act-observe agent loop in production descends from this pattern, which makes it the ancestral design decision of the behavioral layer: the choice that agent behavior would be narrated between actions. That narration is what makes agent behavior specifiable, loggable, and auditable at all.
+
 ## Builder read
 
 Before ReAct, reasoning (chain-of-thought) and acting (plan generation) were studied separately. The paper's move is to have the model "generate both reasoning traces and task-specific actions in an interleaved manner," and the division of labor it describes is still the cleanest statement of why agents work: "reasoning traces help the model induce, track, and update action plans as well as handle exceptions, while actions allow it to interface with external sources, such as knowledge bases or environments, to gather additional information." On question answering and fact verification, this "overcomes issues of hallucination and error propagation prevalent in chain-of-thought reasoning by interacting with a simple Wikipedia API." On two interactive decision-making benchmarks (ALFWorld and WebShop), it beat imitation and reinforcement learning baselines by 34% and 10% absolute success rate with only one or two in-context examples.
@@ -23,6 +27,12 @@ Two things to take away. First, the think-act-observe loop you are building on (
 ## Exec read
 
 The authors claim not just better task performance but "improved human interpretability and trustworthiness over methods without reasoning or acting components," and that framing is why this paper belongs in a behavioral evidence base and not just a capabilities one: the same loop that makes agents useful also makes their behavior inspectable, because the agent narrates its reasoning between actions. The caution is that the trace is evidence, not a guarantee. The deception literature that followed (see Related) works by reading exactly these traces and finding models reasoning about deceiving their overseers. Treat the ReAct trace as an audit artifact your organization keeps and reviews, not as a transparency promise that lets you skip oversight.
+
+## Caveats
+
+The results are from the 2022 prompting era: PaLM-class models, few-shot prompts, and baselines that predate modern tool-calling APIs. The loop generalized; the specific numbers did not need to.
+
+A reasoning trace is evidence, not ground truth. Later faithfulness research shows the narrated reasoning does not always reflect the computation that produced the action, and the deception literature reads these same traces both ways. Audit the trace and corroborate it against what the agent actually did.
 
 ## Source
 

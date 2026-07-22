@@ -24,6 +24,8 @@ The notes on this site are produced by a defined process, described here so that
 
 Research agents discover primary sources and draft resource notes. Each note must trace its claims to a primary source that was fetched and read. A note that cannot cite a primary source is not published.
 
+Source tiers describe provenance, not endorsement. "Tier 1" means the note rests on the primary artifact itself (the paper, model card, changelog, or repository) rather than secondhand coverage; it is not a peer-review judgment, and preprints are labeled the same way as published work when they are the artifact under discussion.
+
 The standards are written down. A public editorial contract, [EDITORIAL.md](https://github.com/jgoldfoot/behavioral-layer/blob/main/EDITORIAL.md) in the repository, defines what a note must contain and how it must read. Continuous integration enforces that contract mechanically on every proposed change: it checks that each resource note cites a source, that internal links resolve, that frontmatter is valid, that freshness dates are present, and that no term on a confidentiality denylist appears.
 
 Enforcement is not the last step. A human editor, Joel Goldfoot, reviews and verifies every note before it merges. Nothing reaches the site without that human sign-off. Every change is proposed as a pull request and recorded in the public git history at [github.com/jgoldfoot/behavioral-layer](https://github.com/jgoldfoot/behavioral-layer), so the provenance of any sentence is inspectable.

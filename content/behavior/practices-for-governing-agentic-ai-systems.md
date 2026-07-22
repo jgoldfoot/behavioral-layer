@@ -14,6 +14,10 @@ tags: [agentic-ai, governance, accountability, oversight, safety-practices]
 
 OpenAI's white paper defining agentic AI systems and proposing seven baseline practices for keeping "agents' operations safe and accountable," written before the agent wave broke and still the cleanest checklist of what deploying one responsibly requires.
 
+## Why it matters
+
+This is the closest thing the field has to a pre-agreed governance vocabulary for agents: a working definition of agenticness, seven named practices, and an allocation of responsibility across developer, deployer, and user. When a behavioral contract needs section headings, this paper is where several of them come from.
+
 ## Builder read
 
 Start with the definition, because it is the useful kind: agenticness is "the degree to which a system can adaptably achieve complex goals in complex environments with limited direct supervision." A degree, not a category. The paper decomposes it into components like goal complexity and independent execution, which gives you a way to talk about how agentic your system is rather than whether it "is an agent."
@@ -27,6 +31,14 @@ Note what the paper does not claim. For each practice it enumerates open questio
 The paper's most consequential move is allocating responsibility across the agent life-cycle. It names three human parties (model developers, system deployers, and users) and argues for agreed baseline practices so that "when an agentic AI system causes harm, we can identify which parties deviated from these best practices in a way that failed to prevent the harm." That is an accountability framework, and it maps directly onto vendor contracts: when your deployed agent fails, which party was supposed to have prevented it, and can you show you held up your end?
 
 The practices double as a due-diligence checklist. Before an agent deployment, you can ask in plain language: was suitability evaluated, what actions can it take without approval, can we read what it did, who is watching it, and who can shut it off. A team that cannot answer those is running an agent without the baseline this paper proposed years ago. The paper also flags indirect, society-scale impacts (adoption races, labor displacement, offense-defense shifts) that no single deployment decision addresses; worth knowing the frame exists, even if your remit is one system.
+
+## Caveats
+
+This is a white paper, not peer-reviewed research: one lab's proposal for baseline practices, written from its own vantage point, and the practices are recommendations rather than measured interventions.
+
+It predates the modern agent stack (late 2023). Its open questions have narrowed unevenly since, and it does not address the multi-agent and computer-use patterns that arrived after it.
+
+The accountability framework allocates responsibility in principle; nothing in the paper binds any party to it in practice.
 
 ## Source
 

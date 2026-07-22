@@ -37,6 +37,9 @@ first. This file only adds what is specific to the recurring run.
 ### 2. Verify (hard gate)
 - Fetch and READ each primary source. Every claim and every quotation must trace to it. If you
   cannot verify a claim, cut it. Confirm each `url` resolves.
+- Scope-words check (EDITORIAL 6.4): ledes and claims keep the source's own strength and scope
+  words. No hedge-to-causal upgrades, no capability-to-propensity widening, and authors'
+  framings are attributed, not asserted.
 
 ### 3. Draft
 - **Signal notes** at `content/signal/<kebab-slug>.md`. They are short but still resource

@@ -24,7 +24,7 @@ This is the missing piece between specifying good behavior and getting it. Discl
 
 ## Builder read
 
-There is a usable control signal hiding in the model. Asking it to rate the probability its answer is correct, or to predict whether it knows, gives you a number you can threshold: below the line, the agent hands off, asks for confirmation, or says it is not sure, rather than acting.
+There is a usable control signal hiding in the model. Asking it to rate the probability its answer is correct, or to predict whether it knows, gives you a number you can threshold (after validating calibration on the model you actually deploy; see Caveats): below the line, the agent hands off, asks for confirmation, or says it is not sure, rather than acting.
 
 That is the mechanism behind a real escalation policy. Most teams hard-code escalation to keywords or never build it. A calibrated confidence signal lets escalation be a function of the model's own uncertainty, which is the version that generalizes.
 
@@ -41,6 +41,8 @@ It also reframes hallucination. Confident wrong answers are not only a training 
 The reassuring result has a hard edge: models are far worse at judging their own knowledge on unfamiliar tasks than on familiar ones. The confidence signal degrades exactly where you most need it, on the novel question the system has not seen before.
 
 The work studies models and their self-evaluation, not a deployed agent's runtime behavior. The path from "the signal exists" to "the agent reliably escalates on it" is engineering you still have to do.
+
+The headline calibration results are for pretrained base models in specific multiple-choice formats. The assistants anyone actually deploys are RLHF-tuned, and the paper itself reports that such tuning degrades calibration; verbalized confidence from deployed chat models also tends to skew overconfident. Expect worse calibration than the headline numbers and validate on your own model before wiring a threshold to it.
 
 It is one lab's study from an earlier model generation. The direction has held up, but specific numbers are dated and should not be quoted as current capability.
 
