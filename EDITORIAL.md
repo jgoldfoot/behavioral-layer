@@ -34,6 +34,16 @@ primary source's real title, authors, identifiers, and URL exactly, even when th
 a company or product name. The naming rule governs your own prose, not the citation of a
 source.
 
+1.6 Citable is not notable. Qualifying as a tier-1 source (1.2) makes an artifact
+quotable; it does not earn it a resource note. A resource note requires significance on
+at least one of these axes: peer-reviewed publication; an official artifact of an
+accountable organization (a lab's model card, spec, or changelog); demonstrable
+independent adoption or citation; or clear field-shaping influence. Single-author
+frameworks, self-evaluated benchmarks, and patent-pending proposals wait on the
+watch-list (`outlines/watchlist.md`) until they clear one of those bars. The honesty
+test: would this note exist if the artifact did not flatter the site's own thesis? If
+the answer is no, it waits.
+
 ## 2. Freshness
 
 2.1 Every resource note records `date_added` and `last_verified` as `YYYY-MM-DD`. **(CI)**

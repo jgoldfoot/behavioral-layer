@@ -33,6 +33,12 @@ prompt -- do not roam beyond it.
 - Identify the best **tier-1 primary source**: arXiv, an official lab/project blog, a
   changelog, an official repo, a model or system card, or a peer-reviewed paper. No secondary
   source as the spine of a note.
+- **Notability check (EDITORIAL 1.6): citable is not notable.** Before drafting, confirm the
+  artifact clears at least one bar: peer review, an accountable organization's official
+  artifact, independent adoption/citation, or field-shaping influence. Single-author
+  frameworks, self-evaluated benchmarks, and patent-pending proposals go to
+  `outlines/watchlist.md` with revisit criteria instead of becoming notes. Ask the honesty
+  question: would this note exist if the artifact did not flatter the site's own thesis?
 
 ### 2. Draft
 - Decide the note type from the artifact:
