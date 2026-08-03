@@ -22,6 +22,10 @@ The core goes stateless. The `initialize`/`initialized` handshake is removed, an
 
 This is the plumbing of the behavioral layer being built to be governed, not just demoed. A stateless, cacheable, OAuth-and-OpenID-aligned protocol with a formal deprecation policy (every feature gets an Active, Deprecated, and Removed lifecycle with "at least twelve months between deprecation and removal") is what agent tooling looks like when reliability and change management are first-class. MCP Apps is the piece to watch: it moves the interface itself into the protocol, so what an agent shows a user, and what a user's click does, becomes a specified, sandboxed surface rather than an afterthought. The final spec lands 2026-07-28.
 
+## Since publication
+
+The specification shipped on 2026-07-28, and the final release adds material this note could not cover from the release candidate: Multi Round-Trip Requests replacing the server-initiated `elicitation/create`, `sampling/createMessage`, and `roots/list` calls, and a set of deprecations (Roots, Sampling, Logging, Dynamic Client Registration, and the legacy HTTP+SSE transport) now running against the twelve-month clock. See [[mcp-2026-07-28-spec-ships|MCP ships the 2026-07-28 specification]].
+
 ## Source
 
 Primary: [The 2026-07-28 MCP Specification Release Candidate](https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/) (Model Context Protocol Blog, May 21, 2026).
