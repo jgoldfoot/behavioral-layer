@@ -117,3 +117,5 @@ machine-readable metadata (publish dates, MIME types, the search verification ta
 
 Built on [Quartz v4](https://github.com/jackyzha0/quartz) (MIT), which ships in this repo and
 is covered by `LICENSE.txt`.
+
+<!-- readme-verified: 2026-08-09 -->

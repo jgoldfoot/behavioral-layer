@@ -9,13 +9,14 @@
     "quartz": "./quartz/bootstrap-cli.mjs",
     "build": "npx quartz build",
     "serve": "npx quartz build --serve",
-    "lint": "npm run lint:content && npm run lint:denylist",
+    "lint": "npm run lint:content && npm run lint:denylist && npm run lint:readme",
     "lint:content": "node scripts/lint-content.mjs",
     "lint:denylist": "node scripts/check-denylist.mjs",
     "check": "tsc --noEmit && npx prettier . --check",
     "format": "npx prettier . --write",
     "test": "tsx --test",
-    "profile": "0x -D prof ./quartz/bootstrap-cli.mjs build --concurrency=1"
+    "profile": "0x -D prof ./quartz/bootstrap-cli.mjs build --concurrency=1",
+    "lint:readme": "node scripts/check-readme.mjs"
   },
   "engines": {
     "npm": ">=10.9.2",

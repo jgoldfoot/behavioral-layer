@@ -23,6 +23,7 @@ import { readdirSync, readFileSync } from "node:fs"
 import { join, relative, dirname, basename, resolve, sep } from "node:path"
 import { fileURLToPath } from "node:url"
 import matter from "gray-matter"
+import { checkReadme } from "./check-readme.mjs"
 
 const ROOT = resolve(fileURLToPath(import.meta.url), "..", "..")
 const CONTENT = join(ROOT, "content")
@@ -302,6 +303,11 @@ for (const file of files) {
       }
     }
   })
+}
+
+// ---- README drift check (repo docs are part of the record too) --------------
+for (const e of checkReadme(ROOT)) {
+  errors.push(e)
 }
 
 // ---- report -----------------------------------------------------------------
