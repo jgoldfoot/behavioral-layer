@@ -25,6 +25,7 @@ import { fileURLToPath } from "node:url"
 import matter from "gray-matter"
 import { checkReadme } from "./check-readme.mjs"
 import { checkStaleness } from "./check-staleness.mjs"
+import { checkBriefings } from "./check-briefings.mjs"
 
 const ROOT = resolve(fileURLToPath(import.meta.url), "..", "..")
 const CONTENT = join(ROOT, "content")
@@ -313,6 +314,11 @@ for (const e of checkReadme(ROOT)) {
 
 // ---- Reverification staleness (clause 2.3 was promised, never enforced) -----
 for (const e of checkStaleness(ROOT)) {
+  errors.push(e)
+}
+
+// ---- Briefings freshness check (the digest cadence is a public promise) -----
+for (const e of checkBriefings(ROOT)) {
   errors.push(e)
 }
 
