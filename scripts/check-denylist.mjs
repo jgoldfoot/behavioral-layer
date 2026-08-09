@@ -39,9 +39,25 @@ if (process.env.EDITORIAL_DENYLIST) {
 }
 
 if (terms.size === 0) {
+  // Fail CLOSED in CI. A confidentiality control that silently passes when it has
+  // nothing to enforce is not a control. In CI the secret is the only source, so an
+  // unset, emptied, or fork-inaccessible secret must stop the merge, not wave it
+  // through. Locally (no CI env var) an absent list is still allowed, because a
+  // contributor without the secret should be able to run the other guardrails.
+  if (process.env.CI) {
+    console.error(
+      "\nDenylist guardrail FAILED: no terms configured in CI.\n\n" +
+        "  EDITORIAL_DENYLIST is unset, empty, or unavailable to this run (GitHub does\n" +
+        "  not expose secrets to pull_request runs from forks). Clause 4.3 is the\n" +
+        "  strictest exclusion on this site and it cannot be enforced by an empty list.\n" +
+        "  Set the secret, or run the check from a branch in this repository.\n",
+    )
+    process.exit(1)
+  }
   console.log(
     "Denylist guardrail: no terms configured " +
-      "(no .editorial/denylist.local.txt and no EDITORIAL_DENYLIST secret). Passing.",
+      "(no .editorial/denylist.local.txt and no EDITORIAL_DENYLIST secret). " +
+      "Passing locally; this FAILS in CI.",
   )
   process.exit(0)
 }

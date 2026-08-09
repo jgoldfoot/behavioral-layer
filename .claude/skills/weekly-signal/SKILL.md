@@ -81,7 +81,20 @@ first. This file only adds what is specific to the recurring run.
 - **Demotion (EDITORIAL 11.5):** any flag, any doubt, any steward-adjacent candidate, any gate
   wobble: omit the `[tier-a]` prefix and say why in the PR body. Joel merges Tier B by hand.
 
-### 6. Briefing draft (Tier C, separate PR)
+### 6. Reverification pass (clause 2.3 has an owner now: you)
+- Run `node scripts/check-staleness.mjs` to get the backlog, oldest first. Take the **five
+  oldest notes** each run. This is not optional and it is not the steward's job; between the
+  site's launch and 2026-08-09 zero reverifications ever happened because nothing owned it.
+- For each: re-fetch its `url`. Confirm it still resolves and that the note's quotations are
+  still present verbatim. Then either bump `last_verified` to today, or, if the source moved,
+  add a `## Since publication` section (EDITORIAL 2.4) recording what changed and bump it.
+- If a source is gone, paywalled, or now contradicts the note, do NOT bump the date. Flag it
+  in the PR body for the steward. A bumped date on an unread source is a fabricated date, the
+  exact defect the 2026-07 incident was about.
+- Include the reverified notes in the same `[tier-a]` PR as the signal batch, and say in the
+  body which notes were reverified and what, if anything, changed.
+
+### 7. Briefing draft (Tier C, separate PR)
 - If the steward's voice skill is available in this session, additionally draft the weekly
   briefing FROM the outline using that skill, as a SEPARATE PR titled `[tier-c voice draft]`,
   at `content/briefings/<kebab-slug>.md`. It is a draft for Joel's review; only he merges it.

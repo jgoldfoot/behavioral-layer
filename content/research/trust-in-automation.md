@@ -4,7 +4,7 @@ url: https://journals.sagepub.com/doi/10.1518/hfes.46.1.50_30392
 type: paper
 section: research
 audience: both
-source_tier: 1
+source_tier: 2
 credit: [Lee and See]
 date_added: 2026-07-10
 last_verified: 2026-07-10
@@ -34,7 +34,7 @@ The KPI this paper hands you is appropriate reliance, not user trust scores. A p
 
 This is a 2004 review and conceptual model of automation, not an experiment and not a study of LLM agents. It integrates prior research on the automated systems of its era; carrying its claims to conversational, tool-using agents is analogy, not evidence, and the paper itself discusses "the challenges of extrapolating the concept of trust in people to trust in automation."
 
-The full text sits behind the publisher's paywall. This note is verified against the journal landing page abstract only, so the paper's fuller vocabulary for kinds and qualities of trust is deliberately not summarized here.
+The full text sits behind the publisher's paywall. This note is verified against the journal landing page abstract only, so the paper's fuller vocabulary for kinds and qualities of trust is deliberately not summarized here. For that reason this note is tier 2, not tier 1: on this site tier 1 means the primary artifact itself was read, and an abstract is not the artifact. It moves to tier 1 when someone reads the full paper.
 
 ## Source
 

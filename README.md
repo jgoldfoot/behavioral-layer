@@ -59,7 +59,9 @@ _templates/         Templater note templates (resource.md); not published
 outlines/           staged drafts for the steward's voice + the notability watch-list;
                     not published, not linted
 .claude/skills/     the research agents' behavioral contracts (research-note, weekly-signal)
-scripts/            guardrail scripts: content linter, denylist check, emitted-HTML check
+scripts/            guardrail scripts: content linter, denylist check (fails closed in
+                    CI), emitted-metadata check, README drift check, reverification
+                    staleness check
 .editorial/         forbidden-term guardrail config (real list is never committed)
 .github/workflows/  CI (runs the guardrails and the build on every PR and push to main)
 quartz.config.ts    site configuration (title, plugins)
