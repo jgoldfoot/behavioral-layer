@@ -200,3 +200,37 @@ primary source inline.
 10.4 **Structural pages** (any `index.md`, `dashboard.md`, or a note with
 `noteType: index | structural | home`) are neither type. They are exempt from the
 frontmatter schema, but are still link-checked and house-style-checked.
+
+## 11. Publication tiers (autonomy calibrated to risk)
+
+11.1 Publication runs on three tiers, applying this site's own doctrine to itself:
+oversight calibrated to risk, autonomy granted in increments, revocable on failure.
+
+11.2 **Tier A -- Signal entries (automated publication with human veto).** A weekly-cadence
+PR may merge without a human click ONLY when every condition holds:
+- the PR was produced by the weekly cadence and touches ONLY `content/signal/` and
+  `outlines/`;
+- every CI gate is green;
+- the PR body records an **independent verification pass**: after drafting, every quote was
+  re-confirmed against a fresh fetch of its primary source;
+- nothing in the batch is steward-adjacent, flagged, or in doubt (clause 11.5);
+- a veto window of at least 48 hours has elapsed since the PR opened, with no hold from the
+  steward (a comment containing "hold" or "veto", or closing the PR);
+- the merge is performed by the designated scheduled merge process. The drafting agent
+  NEVER merges its own proposal, in any tier.
+
+11.3 **Tier B -- Resource notes (human merge).** Research, models, evaluate, build, and
+behavior notes publish only on the steward's merge. This is where editorial judgment
+(notability, framing, adjacency) lives, and no mechanical gate substitutes for it.
+
+11.4 **Tier C -- The steward's voice (human merge, always).** Briefings and concept notes
+carry the steward's byline. Agents may stage outlines and clearly-marked voice drafts for
+review; only the steward merges them, without exception.
+
+11.5 **Demotion is the default.** Any gate failure, any flag, any steward-adjacent
+candidate, any doubt: the batch loses Tier A and waits for a human. When a Tier A
+publication is later found defective, Tier A is suspended entirely until the cause has
+become a clause or a check. Autonomy is granted, not accrued, and it contracts on failure.
+
+11.6 The About page describes the tier system in public. If practice and description ever
+diverge, fixing that divergence outranks publishing anything new.
