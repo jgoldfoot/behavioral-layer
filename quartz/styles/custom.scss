@@ -18,6 +18,13 @@ article h2 {
   border-bottom: 1px solid var(--lightgray);
 }
 
+// Explorer nav: emerald section headers keep their semibold weight (set
+// explicitly in explorer.scss); the nested note links beneath them read
+// regular weight instead of inheriting the global semibold link style.
+.explorer-content ul li > a {
+  font-weight: 400;
+}
+
 // Quotes get a tinted pull treatment: emerald marks emphasis, not decoration.
 blockquote {
   border-left: 3px solid var(--secondary);
