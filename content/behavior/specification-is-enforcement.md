@@ -27,7 +27,7 @@ Some are purely deterministic. Never reveal this field. Always confirm before a 
 
 Some genuinely need the model. Is this request in good faith. Is this the kind of nuance that warrants an exception. These require judgment that does not reduce to a rule, and the model is the right tool for them.
 
-And some are hybrid: the model proposes, a deterministic check disposes. The interesting finding, the one that surprises people who assume AI behavior is irreducibly fuzzy, is how large the first category is. When you actually decompose a real contract, a large share of the clauses turn out to be enforceable in deterministic code, with the model nowhere in the loop. Most of behavior is not a model problem. It is a specification problem wearing a model's clothes.
+And some are hybrid: the model proposes, a deterministic check disposes. What surprises people who assume AI behavior is irreducibly fuzzy is how large the first category can be. In the one production contract I have decomposed clause by clause, close to half of it landed there, with the model nowhere in the loop (the case, and its limits, are in [[behavioral-contracts|Behavioral Contracts]]). One case is not a rate, and I have no basis for claiming a general ratio. The claim that survives the small sample is the qualitative one: a meaningful share of what teams treat as model behavior is a specification problem wearing a model's clothes, and you cannot know your own share until you do the decomposition.
 
 ## Why this is the whole argument
 

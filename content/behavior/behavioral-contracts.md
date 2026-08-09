@@ -33,15 +33,29 @@ I have built these in production, and the surprising part is what falls out when
 
 Start with a contract written in plain language, dozens of clauses organized by domain. Then normalize each clause into a typed rule: what triggers it, what it checks, how it is enforced, and what happens when it is violated. Two things surface immediately. The contradictions you could not see in prose become mechanical, because two rules that disagree now disagree in a way a query can find. And the enforcement split becomes visible.
 
-When I decomposed a production contract this way, close to half the clauses turned out to be enforceable in deterministic code, with no model judgment involved at all. That finding is the argument for the whole discipline. Most of an AI system's behavior is code-enforceable once someone does the specification work. The behavioral layer is not a softer, vibes-based cousin of engineering. It is a real architecture: a thin, constrained model wrapped in deterministic services that check it, with the contract as the source both design and engineering build from.
+When I decomposed one production contract this way, close to half the clauses turned out to be enforceable in deterministic code, with no model judgment involved at all. That is one decomposition, classified by the same person who wrote the contract, and I want to be exact about what it is and is not. It is the observation that convinced me this discipline is real. It is not a survey, and it is not evidence about anyone else's system. If the ratio holds elsewhere, a large share of AI behavior is code-enforceable once someone does the specification work, and that would be the argument for the whole discipline. Whether it holds elsewhere is an open question I would like other people's numbers on.
 
-*A note on provenance: the production work described here is the author's own. The specific system, the client, and the underlying clause counts are withheld under confidentiality. What is shared is the finding, not the artifact that produced it.*
+What I can say without qualification is architectural rather than statistical: once the split exists at all, the behavioral layer stops being a softer, vibes-based cousin of engineering. It is a real architecture, a thin, constrained model wrapped in deterministic services that check it, with the contract as the source both design and engineering build from.
+
+*A note on provenance: the production work described here is the author's own. The specific system, the client, and the underlying clause counts are withheld under confidentiality. What is shared is the finding, not the artifact that produced it. That makes the ratio above unverifiable by a reader, which is a real limitation and the reason it is stated as one case rather than as a result.*
 
 ## Why it is not documentation
 
 A behavioral contract is not a description of a system someone already shipped. It is the thing the system gets built from. The prose exists for human consensus. The normalized register exists for machine enforcement. The same artifact serves both, and that is what makes it infrastructure instead of paperwork.
 
-The agentic era keeps producing agents faster than anyone can govern them. The teams that pull ahead will be the ones who can state, precisely and in writing, how their systems are supposed to behave, and then show that the system conforms. That document does not have a settled name across the industry yet. Here, it is called a behavioral contract.
+The agentic era keeps producing agents faster than anyone can govern them. The teams that pull ahead will be the ones who can state, precisely and in writing, how their systems are supposed to behave, and then show that the system conforms. That document does not have one settled name across the industry yet, though the vocabulary is converging on this one. I have used "behavioral contract" for this artifact since 2025, and in February 2026 a preprint arrived using the same term for a compatible idea, formalizing agent behavioral contracts as a specification language with runtime enforcement ([arXiv:2602.22302](https://arxiv.org/abs/2602.22302)). Convergent naming is worth recording rather than ignoring, so it is recorded here.
+
+## Where this comes from
+
+None of this is new, and pretending otherwise would be the fastest way to be dismissed by people who have been at it longer.
+
+Bertrand Meyer's Design by Contract, from Eiffel in the 1980s, is the source of the word. Its move is the one repeated here: state the obligations at an interface as checkable assertions, then let the runtime enforce them rather than trusting the caller to have read the docs. Swap the caller for a model and most of the structure survives.
+
+The formal study of specified conduct for autonomous agents is older and deeper than the current wave assumes. Normative multi-agent systems and deontic logic have spent decades formalizing obligations, permissions, and prohibitions for agents, including runtime norm enforcement and the institutional machinery around it. The trigger, check, action shape of a typed rule is a rediscovery of that work, not an invention on top of it.
+
+And the deterministic half already has industrial practice: policy-as-code, where authorization and conduct rules are written as inspectable code and evaluated at runtime by an engine like Open Policy Agent, is the enforcement split shipped at scale in a neighboring domain.
+
+The honest question is not what is new here. It is why a mature formal literature never reached the products, and whether the current wave gets further. My working answer is that the earlier work optimized for provable specifications and this one has to survive contact with a probabilistic component, which changes what the artifact has to be: less a logic, more a design document that happens to be partially executable. That is a claim about adoption, not about rigor, and the older literature has the better formal tools.
 
 ## Start here
 

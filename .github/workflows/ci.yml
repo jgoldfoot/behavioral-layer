@@ -39,3 +39,9 @@ jobs:
       # The site must build for a merge.
       - name: Build site
         run: npx quartz build
+
+      # Emitted metadata is part of the contract too. This check exists because of the
+      # fabricated-publish-dates incident; it was written and then never wired up, which
+      # is a control designed but not operating. It runs after the build, on public/.
+      - name: Check emitted metadata
+        run: node scripts/check-emitted.mjs
