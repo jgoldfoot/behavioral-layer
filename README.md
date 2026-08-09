@@ -16,9 +16,11 @@ Most notes here are produced by an agentic research pipeline operating under wri
 behavioral contracts (`.claude/skills/research-note/` and `.claude/skills/weekly-signal/`):
 agents discover primary sources, read them, draft notes with verbatim-traced claims, run
 the guardrails, and open a pull request. A scheduled weekly run keeps the Signal feed
-current. The agents can propose; they cannot publish. Every content merge is made by the
-human steward, and CI re-runs the guardrails on every PR independently. The full
-end-to-end process, including its gates and its governance, is described on the site's
+current. The agents propose; they never merge their own proposals. Publication is tiered
+(EDITORIAL section 11): verified Signal batches can auto-merge after a 48-hour human veto
+window, while analysis and voice content always take the steward's merge, and CI re-runs
+the guardrails on every PR independently. The full end-to-end process, including its
+gates and its governance, is described on the site's
 [About page](https://behaviorlayer.ai/about).
 
 This repo is therefore an instance of the site's own thesis: an autonomous system governed
@@ -106,7 +108,9 @@ machine-readable metadata (publish dates, MIME types, the search verification ta
 - **Live** at [behaviorlayer.ai](https://behaviorlayer.ai) (GitHub Pages, deployed by
   `.github/workflows/deploy.yml` on every merge to `main`; HTTPS enforced).
 - **Cadence:** a scheduled weekly research run proposes Signal entries and a briefing
-  outline as a PR each Monday.
+  draft each Monday. Publication is tiered (EDITORIAL section 11): signal batches that
+  pass all gates plus an independent verification pass auto-merge after a 48-hour human
+  veto window; research notes and voice content always take the steward's merge.
 - **Guardrails active in CI**, including the `EDITORIAL_DENYLIST` secret.
 - **Analytics: deliberately off** pending a decision on cookieless measurement; the site
   sets no tracking cookies.
