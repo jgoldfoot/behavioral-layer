@@ -7,7 +7,7 @@ audience: both
 source_tier: 1
 credit: [Anthropic]
 date_added: 2026-06-24
-last_verified: 2026-06-24
+last_verified: 2026-08-11
 status: live
 tags: [agents, autonomy, oversight, design, behavior]
 ---
@@ -44,9 +44,13 @@ Its advice reflects a fast-moving field, and the specific patterns and even the 
 
 It is one lab's practitioner perspective, shaped by the kinds of systems that lab builds. The restraint it counsels is broadly right, but the specifics are a strong starting point, not a standard.
 
+## Since publication
+
+Reverified 2026-08-11. The post now opens with a note from Anthropic that "Much of the tooling landscape described in this post has changed since December 2024," pointing readers to its current write-up of how Claude Managed Agents was built and to the Managed Agents documentation. That does not disturb the argument this note is here for: the workflows-versus-agents distinction and the case for granting the least autonomy a task requires are unchanged in the text. It does confirm the caveat below about the specific patterns dating faster than the principles, and it means anyone citing this source for tooling advice, rather than for the autonomy tradeoff, should follow the pointer.
+
 ## Source
 
-Primary: [Building Effective Agents](https://www.anthropic.com/research/building-effective-agents) (Anthropic, 2024).
+Primary: [Building Effective Agents](https://www.anthropic.com/research/building-effective-agents) (Anthropic, published 2024-12-19).
 
 ## Related
 

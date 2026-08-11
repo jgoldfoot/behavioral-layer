@@ -7,7 +7,7 @@ audience: both
 source_tier: 1
 credit: [Glaese et al. (DeepMind)]
 date_added: 2026-06-24
-last_verified: 2026-06-24
+last_verified: 2026-08-11
 status: live
 tags: [rules, behavioral-contracts, dialogue, alignment, behavior]
 ---

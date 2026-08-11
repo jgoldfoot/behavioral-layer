@@ -7,7 +7,7 @@ audience: both
 source_tier: 1
 credit: [Inan et al. (Meta)]
 date_added: 2026-06-24
-last_verified: 2026-06-24
+last_verified: 2026-08-11
 status: live
 tags: [guardrails, enforcement, safety, classification, behavior]
 ---
