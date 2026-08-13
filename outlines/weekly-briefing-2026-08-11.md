@@ -83,8 +83,11 @@ setting somebody chose.
 
 ## Beat 3 -- The same week, a guardrail moved the other way, with a number on it
 
-- New signal note: [[fable-5-biology-classifier-update|Anthropic narrows Fable 5's biology
-  safety margin]] (2026-08-07).
+- Signal note: `fable-5-biology-safeguard-recalibration` (2026-08-07). **Not new in this
+  batch.** It is already drafted and awaiting merge in PR #32, the 2026-08-09 Tier A batch.
+  This run initially re-covered the same source and the duplicate was withdrawn; the beat
+  stands, the note is theirs. If PR #32 has not merged when the briefing is written, the
+  wikilink will not resolve, so check that first.
 - The move: Anthropic rewrote the biology classifier's constitution, regenerated training data
   from it, retrained, and re-verified, reporting "about 85%" fewer biology-related fallbacks
   in its own testing while keeping the dual-use block (virology, toxicology, molecular design)
@@ -172,11 +175,16 @@ setting somebody chose.
   than a Signal entry. Nothing changed this week that alters that recommendation.
 - Nothing this fortnight was steward-adjacent. No candidate centred on an organisation with a
   current or recent professional or consulting relationship, and nothing was withheld on
-  confidentiality grounds. Worth flagging for balance rather than confidentiality: all three
-  notes in this batch involve Anthropic (two as the disclosing party, one as the subject of
-  AISI's findings). That is what the fortnight produced rather than a selection effect, but if
-  the published briefing reads as an Anthropic newsletter, the OpenAI addendum above is the
-  available counterweight.
+  confidentiality grounds. Worth flagging for balance rather than confidentiality: both new
+  notes in this batch involve Anthropic (once as the disclosing party, once as the subject of
+  AISI's findings), and Beat 3's note from PR #32 makes three across the briefing. That is
+  what the fortnight produced rather than a selection effect, but if the published briefing
+  reads as an Anthropic newsletter, the OpenAI addendum above is the available counterweight.
+- **Withdrawn from this batch after the fact:** this run drafted its own note on the Fable 5
+  biology post before noticing that PR #32 (opened 2026-08-09, still unmerged) already covers
+  the same source. The duplicate was removed and Beat 3 now points at PR #32's note. Cause
+  worth fixing: the scan checks `content/` on `main` for existing coverage, which cannot see a
+  sibling PR that has not merged. The check should also read open PRs.
 
 ## Reverification (clause 2.3)
 
