@@ -7,7 +7,7 @@ audience: both
 source_tier: 1
 credit: [Anthropic]
 date_added: 2026-06-24
-last_verified: 2026-06-24
+last_verified: 2026-08-18
 status: live
 tags: [agents, autonomy, oversight, design, behavior]
 ---
@@ -43,6 +43,16 @@ The guide is oriented toward building capable systems, with behavior and safety 
 Its advice reflects a fast-moving field, and the specific patterns and even the convergence on what an agent is have shifted since it was written. Read the principles, which are durable, over the specific patterns, which evolve.
 
 It is one lab's practitioner perspective, shaped by the kinds of systems that lab builds. The restraint it counsels is broadly right, but the specifics are a strong starting point, not a standard.
+
+
+## Since publication
+
+The source now carries an editorial notice from Anthropic at the top: "Much of the tooling landscape
+described in this post has changed since December 2024. For our current approach, see how we built Claude
+Managed Agents and the Managed Agents documentation." The essay text itself is intact, including the
+workflow-versus-agent distinction and the composable patterns this note is about, and its framework list
+has been refreshed. Read the architectural argument as still current and the specific tooling as dated by
+its own publisher.
 
 ## Source
 

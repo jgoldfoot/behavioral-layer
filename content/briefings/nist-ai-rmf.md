@@ -7,7 +7,7 @@ audience: both
 source_tier: 1
 credit: [NIST]
 date_added: 2026-06-24
-last_verified: 2026-06-24
+last_verified: 2026-08-18
 status: live
 tags: [governance, standards, trust, risk, accountability]
 ---
@@ -41,6 +41,16 @@ It is a governance framework, not a behavioral-engineering guide. It tells you w
 It is deliberately general, spanning all of AI risk rather than the agent-behavior layer specifically. Much of it is broader than this site's focus, and the parts most relevant here are the trustworthiness characteristics and the measure-and-manage discipline.
 
 It is voluntary and high-level. It confers a shared vocabulary and a defensible structure, not a guarantee, and a system can map cleanly to the framework and still behave badly in the specifics that matter.
+
+
+## Since publication
+
+NIST's page now states that "The AI RMF 1.0 is being revised as part of the White House AI Action Plan."
+No revised version has been published at the time of this verification, so AI RMF 1.0 (NIST AI 100-1,
+2023) remains the current framework and the four functions described above are unchanged. NIST also
+released a concept note on April 7, 2026 for an AI RMF Profile on Trustworthy AI in Critical
+Infrastructure. Treat the framework as stable but under active revision, and check the version before
+citing a specific subcategory.
 
 ## Source
 
