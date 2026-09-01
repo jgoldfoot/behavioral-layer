@@ -7,7 +7,7 @@ audience: both
 source_tier: 1
 credit: [Sharma et al. (Anthropic)]
 date_added: 2026-06-24
-last_verified: 2026-06-24
+last_verified: 2026-08-31
 status: live
 tags: [sycophancy, honesty, trust, rlhf, failure-mode]
 ---
