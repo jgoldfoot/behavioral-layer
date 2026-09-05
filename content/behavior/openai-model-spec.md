@@ -9,7 +9,7 @@ audience: both
 source_tier: 1
 credit: [OpenAI]
 date_added: 2026-06-24
-last_verified: 2026-08-11
+last_verified: 2026-08-18
 status: live
 tags: [behavioral-contracts, model-behavior, governance, alignment, specification]
 ---
@@ -46,9 +46,21 @@ It encodes one lab's values and resolutions, not a neutral or industry-wide stan
 
 It is a living document. Anything you build on a specific clause should be checked against the current version.
 
+
+## Since publication
+
+OpenAI published a new version of the Spec dated 2026-08-18, superseding the December 18, 2025 version
+this note was originally written against. The anatomy described above (authority levels, hard constraints
+versus defaults, explicit conflict resolution) is unchanged, so the note's argument still holds. The
+substantive additions are a new Guideline-authority section requiring the assistant to help the user
+maintain an accurate mental model of its capabilities, a restatement of the agent autonomy bound from a
+required shutdown timer to a required ending condition, and expanded relational provisions for users
+under 18. See [[openai-model-spec-2026-08-18|the 2026-08-18 revision]] for the detail. Anything built
+against a specific clause should be checked against the current version, as the Caveats above warn.
+
 ## Source
 
-Primary: [model-spec.openai.com](https://model-spec.openai.com/) (current version dated December 18, 2025).
+Primary: [model-spec.openai.com](https://model-spec.openai.com/), which as of this note's last verification serves the version dated August 18, 2026. The December 18, 2025 version this note was originally written against remains hosted at [model-spec.openai.com/2025-12-18.html](https://model-spec.openai.com/2025-12-18.html).
 
 Context on why the Spec exists and how the lab maintains it: [Inside our approach to the Model Spec](https://openai.com/index/our-approach-to-the-model-spec/).
 

@@ -21,7 +21,6 @@ reverification passes.
   citation in the steward's own `behavioral-contracts` concept note (his voice, his call --
   flagged in the PR #24 body).
 
-
 ## Diagnosing Tool-Selection Reasoning in LLM Agents with Canary Tools (Anand and Chattaraj, arXiv 2608.04719)
 
 - **What it is:** two-author preprint (Aug 5, 2026) planting diagnostic "canary tools" in an
@@ -97,3 +96,30 @@ reverification passes.
   method wins is the textbook 1.6 exclusion. No peer review, no independent adoption.
 - **Include if any of:** peer-reviewed acceptance; independent evaluation on IBA-Bench by a
   third party; or adoption of the benchmark outside the authoring group.
+
+# Open verification follow-ups (not notability holds)
+
+Items below are already published. They are here because a specific piece of sourcing is
+thinner than the site's norm and a later artifact could firm it up. Check these each run.
+
+## OpenAI Model Spec 2026-08-18: no announcement post located
+
+- **The note:** `content/signal/openai-model-spec-2026-08-18.md` (published 2026-08-18).
+- **The gap:** every "what changed" statement in that note comes from a direct comparison of the
+  two Model Spec versions OpenAI hosts (2026-08-18 against 2025-12-18). No announcement post,
+  changelog, or release note was located at publication time: `openai.com` returned HTTP 403 on
+  the fetch, and the spec document itself carries no changelog section. The note says so in its
+  `## Source` and does not claim OpenAI announced anything. This is sound but unusual for the
+  site, which normally has the publisher's own account of a change.
+- **What to look for:** an OpenAI post describing the 2026-08-18 revision (candidates include the
+  `openai.com/index/our-approach-to-the-model-spec/` line of posts, the teen-protections update
+  post, or a changelog appearing on `model-spec.openai.com`).
+- **What to do if found:** verify the note's change list against the publisher's own account,
+  correct anything the diff got wrong or framed wrongly, add the post to `## Source`, and bump
+  `last_verified`. If the publisher's account contradicts the diff, the publisher wins and the
+  note gets a correction, not a quiet edit.
+- **What to do if still not found:** leave the note as is. The diff-based sourcing is disclosed
+  and accurate. Do not upgrade the framing to "OpenAI announced" on the strength of secondary
+  coverage.
+- **Raised by:** Joel, on merging PR #37 (2026-08-18): merge, but keep an eye out for a
+  confirming post in future runs.
