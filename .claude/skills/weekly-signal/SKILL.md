@@ -18,8 +18,23 @@ first. This file only adds what is specific to the recurring run.
 1. Confirm `.editorial/denylist.local.txt` exists and is non-empty. If it is missing or empty,
    STOP and tell Joel: without it the denylist guard is a no-op and confidential names could
    leak onto a public site. Never run the scan with an empty denylist.
-2. `cd` into the repo (`~/Documents/Projects/behavioral-layer`) and `git checkout main &&
-   git pull` so you branch from current `main`.
+2. Sync from current `main`: `git -C <repo-root> checkout main` then `git -C <repo-root> pull`.
+
+### Command forms for unattended runs (read this before the first Bash call)
+This skill runs on a schedule, with no human present to answer a permission prompt. Permission
+allow-rules match on the **literal command prefix** and are **not** working-directory scoped, so
+an unqualified `git checkout main` does not match a path-scoped rule and will stall the run.
+
+- **git:** always `git -C <repo-root> ...`. Never rely on the shell's working directory.
+- **gate scripts:** always by absolute path, `node <repo-root>/scripts/lint-content.mjs` and
+  `node <repo-root>/scripts/check-denylist.mjs`.
+- **`npx quartz build`:** matches by prefix regardless of directory, but resolves Quartz from
+  `node_modules`, so run it with the repo root as the working directory.
+- `<repo-root>` is supplied by the caller: the scheduled task prompt carries this machine's
+  actual path. Do not hardcode a home directory into this file, which is public.
+
+If a command is denied, do not retry it verbatim and do not work around the denial. Report which
+rule is missing so the allowlist can be corrected.
 
 ## The run: scan -> verify -> draft -> propose
 
@@ -69,10 +84,12 @@ first. This file only adds what is specific to the recurring run.
 - If any quote fails re-confirmation, fix or cut it and repeat the pass.
 
 ### 5. Propose (never merge your own proposal)
-- Run the gates: `node scripts/lint-content.mjs` (0 problems), `node scripts/check-denylist.mjs`
-  (pass), `npx quartz build` (green). Fix or abort on any failure. Never open a PR that fails CI.
-- Branch `research/signal-<YYYY-MM-DD>`, commit the signal notes and the outline, and open a PR
-  with `gh pr create`. In the body, list each primary source, each material claim and where it
+- Run the gates: `node <repo-root>/scripts/lint-content.mjs` (0 problems),
+  `node <repo-root>/scripts/check-denylist.mjs` (pass), `npx quartz build` (green, run with the
+  repo root as the working directory). Fix or abort on any failure. Never open a PR that fails CI.
+- Confirm each source `url` returns 200 before proposing.
+- Branch `research/signal-<YYYY-MM-DD>` (`git -C <repo-root> checkout -b ...`), commit the signal
+  notes and the outline, and open a PR with `gh pr create`. In the body, list each primary source, each material claim and where it
   is supported, the checks you ran, and the independent verification pass result.
 - **Tier A eligibility (EDITORIAL 11.2):** if the batch touches ONLY `content/signal/` and
   `outlines/`, all gates are green, the verification pass is recorded, and nothing is flagged

@@ -65,16 +65,21 @@ prompt -- do not roam beyond it.
 - Papers get `## Why it matters` and `## Caveats`; model cards get `## Caveats` (CI enforces).
   The Caveats section is where the note says what the source does NOT show.
 - Confirm the `url` and any source links return 200.
-- `node scripts/lint-content.mjs` -> 0 problems.
-- `node scripts/check-denylist.mjs` -> pass. If the topic cannot be covered without a denied
-  term, stop and flag it to Joel; never work around the denylist.
-- Run `npx quartz build` if you are unsure the build stays green.
+- `node <repo-root>/scripts/lint-content.mjs` -> 0 problems.
+- `node <repo-root>/scripts/check-denylist.mjs` -> pass. If the topic cannot be covered without a
+  denied term, stop and flag it to Joel; never work around the denylist.
+- Run `npx quartz build` (with the repo root as the working directory) if you are unsure the
+  build stays green.
 - If any check fails: fix it or abort. Never open a PR that would fail CI.
 
 ### 4. Propose (never publish)
 - Create a branch `research/<slug>`, commit the note (or a small batch), and open a PR with
   `gh pr create`. In the PR body, list the primary source(s), each material claim and where
   it is supported, and which checks you ran. Be explicit about anything you are unsure of.
+- Run every git command in the repo-qualified form (`git -C <repo-root> ...`) rather than relying
+  on the shell's working directory. Permission allow-rules match on the literal command prefix and
+  are not directory-scoped, so the unqualified form prompts on every call, which stalls any
+  unattended run that inherits this skill.
 - Never merge. CI runs the guardrails on the PR; Joel reviews and merges. Merge deploys.
 
 ## When a draft touches Joel's own experience
