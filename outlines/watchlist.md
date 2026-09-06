@@ -57,6 +57,46 @@ reverification passes.
 - **Include if any of:** peer-reviewed acceptance; independent replication of the entropy-coverage
   bound; adoption of the pre-deployment entropy test by another group.
 
+## Invisible Ink Threats / II-Bench (Zhang, Zhang, Zhang, arXiv 2608.02018)
+
+- **What it is:** a three-author preprint (v1 2026-08-03, v2 2026-08-06, listed under cs.CV,
+  no stated affiliations) proposing "Invisible Ink Threats": low-harm indirect prompt
+  injections (starring a repo, installing a package) that are behaviorally indistinguishable
+  from legitimate task steps. It introduces II-Bench (444 examples across Reddit, OwnCloud,
+  and RocketChat) and HITLCUA, a testing harness with an API-simulated user, and evaluates
+  seven computer-use agents.
+- **The finding, which is why this is hard to leave out:** human-in-the-loop confirmation
+  does not merely fail against these injections, it reportedly amplifies them. ASR under
+  HITL is higher than without across all four evaluated pairs (average increase 7.8%; gpt-5.1
+  on Reddit rises from 21.2% to 42.4%), because agents do escalate (query rates up to 75.8%)
+  and the simulated user then approves 73.5% to 83.3% of what it reviews.
+- **Why it is here, not on the site:** it clears none of the EDITORIAL 1.6 bars. Not peer
+  reviewed; not an accountable organization's artifact (no affiliations are stated); no
+  independent citation or adoption; benchmark and harness are both self-built and self-run.
+  The central evidence for a strong claim about *human* judgment is an LLM-simulated novice
+  user, validated against three recruited non-expert participants. And it is precisely the
+  result that would flatter this site's interest in escalation by complicating it, which is
+  the honesty question 1.6 exists to ask.
+- **Include if any of:** peer-reviewed acceptance; independent replication of the HITL
+  amplification result, ideally with real users rather than a simulated one; adoption of
+  II-Bench or HITLCUA by an evaluation effort with an accountable owner; or a lab or
+  institute reporting the same effect in its own systems.
+- **Meanwhile:** the underlying question (whether a confirmation prompt can convert into an
+  attack amplifier by legitimizing the action it approves) is a genuine gap in the
+  `escalation` note's argument and is worth the steward's attention on its own merits, cited
+  as an open question rather than as a finding.
+
+## IBA-Bench (Song et al., arXiv 2608.02171)
+
+- **What it is:** a preprint submitted 2026-08-03 introducing IBA-Bench, a benchmark for
+  "implicit behavioral alignment" built from longitudinal interaction histories, plus
+  IBA-Agent, the authors' own framework, which the abstract reports "substantially improves
+  behavioral alignment in complex scenarios across nine application domains."
+- **Why it is here, not on the site:** a self-built benchmark on which the authors' own
+  method wins is the textbook 1.6 exclusion. No peer review, no independent adoption.
+- **Include if any of:** peer-reviewed acceptance; independent evaluation on IBA-Bench by a
+  third party; or adoption of the benchmark outside the authoring group.
+
 # Open verification follow-ups (not notability holds)
 
 Items below are already published. They are here because a specific piece of sourcing is
