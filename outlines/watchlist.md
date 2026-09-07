@@ -97,6 +97,32 @@ reverification passes.
 - **Include if any of:** peer-reviewed acceptance; independent evaluation on IBA-Bench by a
   third party; or adoption of the benchmark outside the authoring group.
 
+## The Framing Gap (Rahman and Kim, arXiv 2608.27092)
+
+- **What it is:** a two-author preprint (v1, submitted 2026-08-27, cs.CR) on indirect prompt
+  injection against tool-using agents holding a secret. In a synthetic lab with a canary secret and
+  mock tools, ten overt injection classes are refused, but "reframing the identical leak as a
+  mandatory integrity signature, config field, or look-alike \"trusted\" host drives gpt-4o 0% to
+  100%." An ablation attributes the effect to instruction/data confusion rather than defeated
+  alignment: removing the confidentiality policy leaves base attacks at 0% and moves reframing only
+  "31.9% to 38.1%." What closes the gap is payload-blind: a destination allow-list and a
+  capability-isolating planner/reader split, both to 0%. A published fine-tuning defense (SecAlign)
+  does not close it on a tool agent (32.5%), and an output-normalizing guard loses to a held-out
+  ROT13 encoding (100%).
+- **Why it is here, not on the site:** no institutional affiliation is stated for either author, no
+  funding statement, v1 preprint with no peer review and no independent uptake. The lab, the attack
+  templates, and the grading are all the authors' own, so every headline number is self-evaluated,
+  and the setting is synthetic with mock tools rather than a real agent stack. It is also precisely
+  the result that would flatter this site's argument that robustness belongs in the environment
+  rather than in the acting model, which is the honesty question clause 1.6 exists to ask.
+- **Include if any of:** peer-reviewed acceptance; independent replication of the framing gap on a
+  real tool stack; stated institutional affiliation plus reproduction; or adoption of the
+  clean-vs-poisoned matched metric by another group.
+- **Relevance if it clears:** it would sit directly alongside
+  `tool-specification-safety-degradation` and the `prompt-injection` note, and it is the sharpest
+  available statement of the claim that the acting model recognizing an attack is the wrong place
+  to put the control.
+
 # Open verification follow-ups (not notability holds)
 
 Items below are already published. They are here because a specific piece of sourcing is
