@@ -7,7 +7,7 @@ audience: both
 source_tier: 1
 credit: [OWASP]
 date_added: 2026-06-24
-last_verified: 2026-06-24
+last_verified: 2026-09-07
 status: live
 tags: [security, prompt-injection, adversarial, guardrails, behavior]
 ---
@@ -43,6 +43,16 @@ The standard taxonomy is a security framework, not a complete account of agent b
 There is no known complete fix. Mitigations reduce the risk, sometimes substantially, but the field has not solved prompt injection, and any claim of a fully injection-proof system should be read with suspicion.
 
 The list reflects a point in time. Attack techniques evolve, multimodal injection is now part of the picture, and the specific ranking and entries are revised between editions.
+
+## Since publication
+
+OWASP has published a new edition. The page this note cites now presents itself as a historical
+archive and points to the OWASP GenAI Security Project, which lists the OWASP GenAI LLM Top 10
+2026 (published August 4, 2026) as the active release. Prompt injection remains LLM01 in that
+edition, so the note's central claim (that it has held the top spot across consecutive editions)
+still holds and is in fact strengthened. What has changed is where the current list lives: anyone
+building against a specific entry number or mitigation should work from the 2026 edition rather
+than the 2025 PDF linked below.
 
 ## Source
 
