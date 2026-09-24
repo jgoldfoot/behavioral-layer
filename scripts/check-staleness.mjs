@@ -18,6 +18,16 @@
  *   TARGET_DAYS (30)  = clause 2.3's window. Reported, never fails a build.
  *   CEILING_DAYS (90) = the hard floor under the promise. Fails CI.
  *
+ * And two populations, which the first version of this check wrongly conflated:
+ *   SOURCE-BACKED notes (they carry a `url`) can be cleared mechanically: refetch
+ *     the source, re-confirm the quotes, bump the date. These get the hard ceiling.
+ *   ORIGINAL notes (concept notes and briefings, `source_tier: original`, no url)
+ *     have no external source to refetch. Only the steward re-reading the argument
+ *     can clear them, so failing CI on them would block every merge on an action no
+ *     agent can take, and the control would get bypassed rather than obeyed. They
+ *     are reported on every run and never fail the build. (Found 2026-09-23, when
+ *     5 of Joel's own essays crossed the ceiling and red-lit the whole repo.)
+ *
  * Runnable standalone (`node scripts/check-staleness.mjs`) and imported by
  * lint-content.mjs so the existing CI invocation covers it.
  */
@@ -50,20 +60,33 @@ export function checkStaleness(root, today = new Date()) {
     if (!lv) continue
     const days = Math.floor((today.getTime() - Date.parse(lv[1])) / 86400000)
     if (Number.isNaN(days)) continue
-    aged.push({ file: relative(root, file).split(sep).join("/"), days, date: lv[1] })
+    // A note is mechanically reverifiable only if it names a source to refetch.
+    const sourceBacked = /^url:\s*\S+/m.test(text)
+    aged.push({ file: relative(root, file).split(sep).join("/"), days, date: lv[1], sourceBacked })
   }
   if (aged.length === 0) return errors
 
   aged.sort((a, b) => b.days - a.days)
-  const overCeiling = aged.filter((n) => n.days > CEILING_DAYS)
-  const overTarget = aged.filter((n) => n.days > TARGET_DAYS)
+  const sourced = aged.filter((n) => n.sourceBacked)
+  const original = aged.filter((n) => !n.sourceBacked)
+  const overCeiling = sourced.filter((n) => n.days > CEILING_DAYS)
+  const overTarget = sourced.filter((n) => n.days > TARGET_DAYS)
+  const originalOverTarget = original.filter((n) => n.days > TARGET_DAYS)
 
   // Visible backlog on every run, pass or fail. Silence is how this failed before.
   console.log(
-    `Reverification backlog: ${overTarget.length}/${aged.length} note(s) past the ` +
-      `${TARGET_DAYS}-day clause 2.3 target; oldest is ${aged[0].days}d (${aged[0].file}). ` +
-      `Hard ceiling ${CEILING_DAYS}d.`,
+    `Reverification backlog: ${overTarget.length}/${sourced.length} source-backed note(s) ` +
+      `past the ${TARGET_DAYS}-day clause 2.3 target` +
+      (sourced.length ? `; oldest is ${sourced[0].days}d (${sourced[0].file})` : "") +
+      `. Hard ceiling ${CEILING_DAYS}d.`,
   )
+  if (originalOverTarget.length) {
+    console.log(
+      `Steward review (not CI-blocking): ${originalOverTarget.length} original note(s) ` +
+        `past ${TARGET_DAYS}d with no source to refetch; oldest ${originalOverTarget[0].days}d ` +
+        `(${originalOverTarget[0].file}). These clear only when Joel re-reads the argument.`,
+    )
+  }
 
   if (overCeiling.length) {
     errors.push(

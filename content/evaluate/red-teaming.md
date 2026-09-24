@@ -7,7 +7,7 @@ audience: both
 source_tier: 1
 credit: [Ganguli et al. (Anthropic)]
 date_added: 2026-06-24
-last_verified: 2026-06-24
+last_verified: 2026-09-23
 status: live
 tags: [evaluation, red-teaming, adversarial, safety, behavior]
 ---

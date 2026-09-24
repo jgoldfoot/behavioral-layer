@@ -7,7 +7,7 @@ audience: both
 source_tier: 1
 credit: [IBM Research]
 date_added: 2026-06-24
-last_verified: 2026-06-24
+last_verified: 2026-09-23
 status: live
 tags: [evaluation, safety, trust, policy-compliance, web-agents, benchmark]
 ---
@@ -43,6 +43,10 @@ The benchmark is grounded in enterprise web tasks built on a specific web-agent 
 The reported results cover a small number of agents on a shared backbone, so read the pattern, the large gap between completion and compliant completion, rather than any single agent's score as a fixed fact.
 
 Like any benchmark, it encodes its authors' framework for what safe and trustworthy means. It is a strong and useful framework, not the last word on the dimensions that matter.
+
+## Since publication
+
+Reverified 2026-09-23. The preprint has advanced to v7 (2026-06-04) and its abstract is materially revised from the version this note was written against. The current abstract specifies 222 tasks, each paired with ST policies and scored along six orthogonal dimensions, and adds a second metric, Risk Ratio, quantifying ST breaches across dimensions. It also states the headline result numerically: evaluating three open state-of-the-art agents, "their average CuP is less than two-thirds of their nominal completion rate." The note's argument is unchanged by the revision; the numbers above are the precise form of what it described qualitatively.
 
 ## Source
 
