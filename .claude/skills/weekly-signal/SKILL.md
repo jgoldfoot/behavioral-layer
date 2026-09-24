@@ -99,8 +99,15 @@ rule is missing so the allowlist can be corrected.
   wobble: omit the `[tier-a]` prefix and say why in the PR body. Joel merges Tier B by hand.
 
 ### 6. Reverification pass (clause 2.3 has an owner now: you)
-- Run `node scripts/check-staleness.mjs` to get the backlog, oldest first. Take the **five
-  oldest notes** each run. This is not optional and it is not the steward's job; between the
+- Run `node <repo-root>/scripts/check-staleness.mjs` to get the backlog, oldest first. Take the **eight
+  oldest source-backed notes** each run. Eight, not five, because of cycle time: with ~59
+  source-backed notes and a 90-day ceiling, clearing five a week is break-even before you
+  count the two to three new notes each batch adds, so any missed week breaches. It did:
+  runs stalled on permission prompts from 2026-08-18 to 2026-09-06 and fifteen notes went
+  over the ceiling, turning CI red and blocking two signal PRs. Eight leaves margin.
+- Only source-backed notes (they carry a `url`) are yours. Original concept notes and
+  briefings have nothing to refetch; the check reports them separately for Joel and they
+  never block CI. This is not optional and it is not the steward's job; between the
   site's launch and 2026-08-09 zero reverifications ever happened because nothing owned it.
 - For each: re-fetch its `url`. Confirm it still resolves and that the note's quotations are
   still present verbatim. Then either bump `last_verified` to today, or, if the source moved,
