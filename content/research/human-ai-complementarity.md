@@ -7,7 +7,7 @@ audience: both
 source_tier: 1
 credit: [Bansal et al.]
 date_added: 2026-07-10
-last_verified: 2026-07-10
+last_verified: 2026-10-15
 status: live
 tags: [complementarity, explanations, overreliance, team-performance, human-ai-interaction]
 ---

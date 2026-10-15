@@ -7,7 +7,7 @@ audience: both
 source_tier: 1
 credit: [Greenblatt et al. (Anthropic, Redwood Research)]
 date_added: 2026-07-09
-last_verified: 2026-07-09
+last_verified: 2026-10-15
 status: live
 tags: [deception, alignment, evaluation, model-behavior, training]
 ---

@@ -7,7 +7,7 @@ audience: both
 source_tier: 1
 credit: [NVIDIA]
 date_added: 2026-07-09
-last_verified: 2026-07-09
+last_verified: 2026-10-15
 status: live
 tags: [guardrails, enforcement, runtime, dialogue, constraints]
 ---
@@ -18,7 +18,7 @@ NeMo Guardrails is "an open-source toolkit for easily adding programmable guardr
 
 The core move is where the rules live. Alignment training bakes behavior into weights; NeMo Guardrails instead uses "a runtime inspired from dialogue management" so developers can add rails that are "user-defined, independent of the underlying LLM, and interpretable." You write them in Colang, "a modeling language specifically created for designing flexible, yet controllable, dialogue flows," with "a python-like syntax." Because the rails sit outside the model, the paper reports the approach "can be used with several LLM providers," which means your constraint layer survives a model swap.
 
-The toolkit's documentation distinguishes five places a rail can sit: input rails on user input, dialog rails that "influence LLM prompting and determine if actions/LLM invocation should occur," retrieval rails on RAG chunks, execution rails on the input and output of custom actions and tools, and output rails that "can reject or modify" what the model generated. That map is worth internalizing even if you never adopt the toolkit: it enumerates the interception points where a behavioral contract can actually be enforced. One honest caution from the project itself: "The built-in guardrails may or may not be suitable for a given production use case." You still have to evaluate the rails against your own policy, not just install them.
+The toolkit's documentation distinguishes five places a rail can sit: input rails on user input, dialog rails that "influence how the LLM is prompted" and "determine if an action should be executed," retrieval rails on RAG chunks, execution rails on the input and output of custom actions and tools, and output rails, which "can reject the output" or "alter it" before it reaches the user. That map is worth internalizing even if you never adopt the toolkit: it enumerates the interception points where a behavioral contract can actually be enforced. One honest caution from the project itself: "The built-in guardrails may or may not be suitable for a given production use case." You still have to evaluate the rails against your own policy, not just install them.
 
 ## Exec read
 
@@ -26,7 +26,9 @@ This is the clearest available demonstration that behavior policy can be a versi
 
 ## Source
 
-Primary: [NeMo Guardrails: A Toolkit for Controllable and Safe LLM Applications with Programmable Rails](https://arxiv.org/abs/2310.10501) (Rebedea et al., NVIDIA, 2023; EMNLP 2023 Demo track); toolkit: [NVIDIA/NeMo-Guardrails on GitHub](https://github.com/NVIDIA/NeMo-Guardrails).
+Primary: [NeMo Guardrails: A Toolkit for Controllable and Safe LLM Applications with Programmable Rails](https://arxiv.org/abs/2310.10501) (Rebedea et al., NVIDIA, 2023; EMNLP 2023 Demo track); toolkit: [NVIDIA-NeMo/Guardrails on GitHub](https://github.com/NVIDIA-NeMo/Guardrails) (formerly `NVIDIA/NeMo-Guardrails`, which now redirects there).
+
+Correction (2026-10-15): reverification found that two phrases earlier set in quotation marks (the dialog-rail and output-rail descriptions) did not match the toolkit's documentation verbatim. They now quote the project README. The repository has also moved to `NVIDIA-NeMo/Guardrails`; the link is updated.
 
 ## Related
 

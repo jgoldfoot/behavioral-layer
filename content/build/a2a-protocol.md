@@ -7,7 +7,7 @@ audience: both
 source_tier: 1
 credit: [A2A Project (Linux Foundation)]
 date_added: 2026-07-09
-last_verified: 2026-07-09
+last_verified: 2026-10-15
 status: live
 tags: [interoperability, multi-agent, protocol, agent-discovery, task-lifecycle]
 ---

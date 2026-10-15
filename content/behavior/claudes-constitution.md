@@ -7,7 +7,7 @@ audience: both
 source_tier: 1
 credit: [Anthropic]
 date_added: 2026-07-09
-last_verified: 2026-07-09
+last_verified: 2026-10-15
 status: live
 tags: [behavioral-contracts, model-behavior, alignment, specification, transparency]
 ---

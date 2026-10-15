@@ -7,7 +7,7 @@ audience: both
 source_tier: 2
 credit: [Lee and See]
 date_added: 2026-07-10
-last_verified: 2026-07-10
+last_verified: 2026-10-15
 status: live
 tags: [trust, reliance, human-factors, automation, human-agent-interaction]
 ---

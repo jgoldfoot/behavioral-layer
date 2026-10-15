@@ -7,7 +7,7 @@ audience: both
 source_tier: 1
 credit: [OpenAI]
 date_added: 2026-07-20
-last_verified: 2026-07-20
+last_verified: 2026-10-15
 status: live
 tags: [system-card, agentic-safety, over-agency, severity-scoring, model-behavior, supervision]
 ---

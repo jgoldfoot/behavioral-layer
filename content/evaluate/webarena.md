@@ -7,7 +7,7 @@ audience: both
 source_tier: 1
 credit: [Zhou et al. (Carnegie Mellon University)]
 date_added: 2026-07-09
-last_verified: 2026-07-09
+last_verified: 2026-10-15
 status: live
 tags: [web-agents, benchmark, agents, evaluation, long-horizon]
 ---

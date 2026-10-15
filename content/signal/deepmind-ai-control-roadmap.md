@@ -7,7 +7,7 @@ audience: both
 source_tier: 1
 credit: [Google DeepMind]
 date_added: 2026-07-13
-last_verified: 2026-07-13
+last_verified: 2026-10-15
 status: live
 tags: [ai-control, agent-security, insider-threat, monitoring, governance]
 ---
@@ -20,7 +20,7 @@ The roadmap "treats untrusted AI agents as potential 'insider threats'" and laye
 
 ## Exec read
 
-This is the deployment half of agent safety, and it is a governance stance, not a model score. The insider-threat framing says the useful question is not "is the agent aligned" but "what can it do before anyone notices, and can we intervene in time." Sorting controls into detection and response tiers keyed to what the model can actually do turns "we trust the agent" into a graded, auditable policy: low-risk actions get after-the-fact review, high-risk actions get blocked in real time. It is the same specify-then-enforce discipline the behavioral layer runs on, applied to an agent operating inside your own systems.
+This is the deployment half of agent safety, and it is a governance stance, not a model score. Read through the insider-threat framing, the useful question shifts from whether the agent is aligned to what it can do before anyone notices, and whether anyone can intervene in time. Sorting controls into detection and response tiers keyed to what the model can actually do turns trust in the agent into a graded, auditable policy: low-risk actions get after-the-fact review, high-risk actions get blocked in real time. It is the same specify-then-enforce discipline the behavioral layer runs on, applied to an agent operating inside your own systems.
 
 ## Source
 
