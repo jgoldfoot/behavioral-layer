@@ -7,7 +7,7 @@ audience: both
 source_tier: 1
 credit: [Hubinger et al. (Anthropic)]
 date_added: 2026-07-09
-last_verified: 2026-07-09
+last_verified: 2026-10-15
 status: live
 tags: [deception, safety-training, backdoors, model-behavior, evaluation]
 ---

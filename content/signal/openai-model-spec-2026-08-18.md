@@ -7,7 +7,7 @@ audience: both
 source_tier: 1
 credit: [OpenAI]
 date_added: 2026-08-18
-last_verified: 2026-08-18
+last_verified: 2026-10-15
 status: live
 tags: [model-spec, behavioral-contracts, specification, agent-autonomy, transparency, expectation-setting]
 ---
@@ -32,7 +32,7 @@ Note the standing limit on all of this, which the previous version carried too: 
 
 ## Source
 
-Primary: [Model Spec (2026/08/18)](https://model-spec.openai.com/2026-08-18.html), OpenAI, dated August 18, 2026, and served as the current version at [model-spec.openai.com](https://model-spec.openai.com/). Statements about what changed are from a direct comparison of that document against the previous published version, [Model Spec (2025/12/18)](https://model-spec.openai.com/2025-12-18.html), which OpenAI continues to host. No accompanying announcement post was verified for this release, so the release framing here is the documents' own.
+Primary: [Model Spec (2026/08/18)](https://model-spec.openai.com/2026-08-18.html), OpenAI, dated August 18, 2026, and served as the current version at [model-spec.openai.com](https://model-spec.openai.com/). Statements about what changed are from a direct comparison of that document against the previous published version, [Model Spec (2025/12/18)](https://model-spec.openai.com/2025-12-18.html), which OpenAI continues to host. OpenAI's own account of the release is the "Updates to the OpenAI Model Spec (August 18, 2026)" entry in its [Model Release Notes](https://help.openai.com/en/articles/9624314-model-release-notes), located and checked against this note on 2026-10-15 (not available when the note was first published). That entry lists the teen relational-interaction principles, the handling of "false or unsupported premises," the new "Be clear about capabilities and limits" section, and the removal of "outdated guidance for pre-reasoning models," which this note's diff does not cover. It describes the remainder as "a few other small changes and copy edits"; the autonomy, intent, ads, and objectivity revisions above are among those, and their significance is this note's reading, not OpenAI's.
 
 ## Related
 

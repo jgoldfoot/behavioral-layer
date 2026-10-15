@@ -7,7 +7,7 @@ audience: both
 source_tier: 1
 credit: [Packer et al. (UC Berkeley)]
 date_added: 2026-07-09
-last_verified: 2026-07-09
+last_verified: 2026-10-15
 status: live
 tags: [memory, context-management, long-horizon, agent-state, paper]
 ---

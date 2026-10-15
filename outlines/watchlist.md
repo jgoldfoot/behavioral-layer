@@ -123,3 +123,10 @@ thinner than the site's norm and a later artifact could firm it up. Check these 
   coverage.
 - **Raised by:** Joel, on merging PR #37 (2026-08-18): merge, but keep an eye out for a
   confirming post in future runs.
+- **Resolved 2026-10-15:** OpenAI's Model Release Notes (help.openai.com article 9624314) carry an
+  "Updates to the OpenAI Model Spec (August 18, 2026)" entry. Its change list agrees with the note
+  (teen relational principles, false premises, the new "Be clear about capabilities and limits"
+  section) and adds one item the diff did not cover (removal of guidance for pre-reasoning models).
+  Nothing in it contradicts the note. Added to the note's `## Source` with that scope; the other
+  revisions remain the note's reading, which OpenAI groups as "a few other small changes". The
+  help-center URL returns 403 to curl and was read in a browser.

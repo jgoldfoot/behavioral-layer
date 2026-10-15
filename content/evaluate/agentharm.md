@@ -7,7 +7,7 @@ audience: both
 source_tier: 1
 credit: [Andriushchenko et al. (UK AI Safety Institute)]
 date_added: 2026-07-09
-last_verified: 2026-07-09
+last_verified: 2026-10-15
 status: live
 tags: [agent-safety, misuse, jailbreaks, refusal, benchmark]
 ---

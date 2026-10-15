@@ -7,7 +7,7 @@ audience: both
 source_tier: 1
 credit: [Y. Han, M. Chen, Y. Yu, J. Lin (China Mobile)]
 date_added: 2026-07-20
-last_verified: 2026-07-20
+last_verified: 2026-10-15
 status: live
 tags: [benchmark, standards, agent-security, excessive-agency, scoring, governance]
 ---

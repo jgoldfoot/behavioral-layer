@@ -7,7 +7,7 @@ audience: both
 source_tier: 1
 credit: [Buçinca, Malaya, and Gajos]
 date_added: 2026-07-10
-last_verified: 2026-07-10
+last_verified: 2026-10-15
 status: live
 tags: [overreliance, explanations, cognitive-forcing, decision-support, human-ai-interaction]
 ---

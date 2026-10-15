@@ -7,7 +7,7 @@ audience: both
 source_tier: 1
 credit: [OpenAI]
 date_added: 2026-07-09
-last_verified: 2026-07-09
+last_verified: 2026-10-15
 status: live
 tags: [system-card, model-behavior, safety, refusals, deception]
 ---
@@ -28,7 +28,7 @@ Treat the router as a behavioral fact. Because a router chooses between a fast m
 
 Safe-completions change the shape of the failure mode. When a model is trained to maximize helpfulness within policy rather than to refuse, "it refused" becomes less common and "it gave a hedged or partial answer" becomes the thing to evaluate. The card also documents post-training "to reduce sycophancy," following the sycophantic behaviors that emerged in GPT-4o.
 
-The card is a template for having behavior checked externally. It reports third-party evaluations, including Apollo Research on sandbagging and an assessment by METR, which found "no clear evidence of sandbagging" but noted that "gpt-5-thinking does exhibit some situational awareness, for instance it sometimes reasons about the fact that it is" being evaluated. That combination, reassurance plus a documented caveat, is the useful part.
+The card is a template for having behavior checked externally. It reports third-party evaluations, including Apollo Research on sandbagging and an assessment by METR, whose monitor review of 789 runs "did not find any clear evidence of sandbagging" but which noted that "gpt-5-thinking does exhibit some situational awareness, for instance it sometimes reasons about the fact that it is" being evaluated. That combination, reassurance plus a documented caveat, is the useful part.
 
 ## Exec read
 
@@ -47,6 +47,8 @@ Documented behavior is intended and tested behavior, not a guarantee of behavior
 ## Source
 
 Primary: [GPT-5 System Card](https://cdn.openai.com/gpt-5-system-card.pdf) (OpenAI, August 13, 2025). The safe-completions approach is detailed in the card's section "From Hard Refusals to Safe-Completions."
+
+Correction (2026-10-15): reverification found that the METR finding was earlier quoted as "no clear evidence of sandbagging"; the card's wording is that a monitor "did not find any clear evidence of sandbagging." The quotation now matches the card.
 
 ## Related
 
